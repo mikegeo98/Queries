@@ -1,0 +1,39 @@
++----------+------------------+
+|l_orderkey|            s_name|
++----------+------------------+
+|   3087552|Supplier#000069352|
+|   3088386|Supplier#000876272|
+|   3090082|Supplier#000258032|
+|   3090437|Supplier#000986160|
+|   3090439|Supplier#000632365|
+|   3090978|Supplier#000055265|
+|   3091236|Supplier#000998397|
+|   3091328|Supplier#000175513|
+|   3091425|Supplier#000304853|
+|   3092166|Supplier#000527768|
+|   3092449|Supplier#000873883|
+|   3092480|Supplier#000698996|
+|   3092576|Supplier#000742526|
+|   3092773|Supplier#000489204|
+|   3093284|Supplier#000160563|
+|   3093346|Supplier#000093486|
+|   3093633|Supplier#000254312|
+|   3093859|Supplier#000485130|
+|   3093894|Supplier#000585670|
+|   3094209|Supplier#000596351|
++----------+------------------+
+only showing top 20 rows
+
+== Physical Plan ==
+*(3) Project [l_orderkey#48, s_name#111]
++- *(3) ShuffledHashJoin [s_suppkey#110], [l_suppkey#50], Inner, BuildLeft
+   :- Exchange hashpartitioning(s_suppkey#110, 200), ENSURE_REQUIREMENTS, [id=#127]
+   :  +- *(1) Filter isnotnull(s_suppkey#110)
+   :     +- FileScan csv [s_suppkey#110,s_name#111] Batched: false, DataFilters: [isnotnull(s_suppkey#110)], Format: CSV, Location: InMemoryFileIndex[hdfs://parasilo-11.rennes.grid5000.fr:9000/user/diplomma/data/data100/supplier...., PartitionFilters: [], PushedFilters: [IsNotNull(s_suppkey)], ReadSchema: struct<s_suppkey:int,s_name:string>
+   +- Exchange hashpartitioning(l_suppkey#50, 200), ENSURE_REQUIREMENTS, [id=#133]
+      +- *(2) Project [l_orderkey#48, l_suppkey#50]
+         +- *(2) Filter ((isnotnull(l_shipdate#58) AND (cast(l_shipdate#58 as date) > 9204)) AND isnotnull(l_suppkey#50))
+            +- FileScan csv [l_orderkey#48,l_suppkey#50,l_shipdate#58] Batched: false, DataFilters: [isnotnull(l_shipdate#58), (cast(l_shipdate#58 as date) > 9204), isnotnull(l_suppkey#50)], Format: CSV, Location: InMemoryFileIndex[hdfs://parasilo-11.rennes.grid5000.fr:9000/user/diplomma/data/data100/lineitem...., PartitionFilters: [], PushedFilters: [IsNotNull(l_shipdate), IsNotNull(l_suppkey)], ReadSchema: struct<l_orderkey:int,l_suppkey:int,l_shipdate:string>
+
+
+Partitions no lineitem supplier 593 20

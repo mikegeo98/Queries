@@ -1,0 +1,53 @@
++---------+-------------------+
+|   n_name|            revenue|
++---------+-------------------+
+|  VIETNAM|5.310749966867001E9|
+|    INDIA|5.296094837750303E9|
+|    JAPAN|  5.2821845288254E9|
+|    CHINA|5.270934901560197E9|
+|INDONESIA|5.270340980460802E9|
++---------+-------------------+
+
+== Physical Plan ==
+*(13) Sort [revenue#356 DESC NULLS LAST], true, 0
++- Exchange rangepartitioning(revenue#356 DESC NULLS LAST, 200), ENSURE_REQUIREMENTS, [id=#552]
+   +- *(12) HashAggregate(keys=[n_name#249], functions=[sum((l_extendedprice#101 * (1.0 - l_discount#102)))])
+      +- Exchange hashpartitioning(n_name#249, 200), ENSURE_REQUIREMENTS, [id=#548]
+         +- *(11) HashAggregate(keys=[n_name#249], functions=[partial_sum((l_extendedprice#101 * (1.0 - l_discount#102)))])
+            +- *(11) Project [l_extendedprice#101, l_discount#102, n_name#249]
+               +- *(11) BroadcastHashJoin [n_regionkey#250], [r_regionkey#278], Inner, BuildRight, false
+                  :- *(11) Project [l_extendedprice#101, l_discount#102, n_name#249, n_regionkey#250]
+                  :  +- *(11) BroadcastHashJoin [s_nationkey#213], [n_nationkey#248], Inner, BuildRight, false
+                  :     :- *(11) Project [l_extendedprice#101, l_discount#102, s_nationkey#213]
+                  :     :  +- *(11) ShuffledHashJoin [l_suppkey#98, c_nationkey#35], [s_suppkey#210, s_nationkey#213], Inner, BuildRight
+                  :     :     :- Exchange hashpartitioning(l_suppkey#98, c_nationkey#35, 200), ENSURE_REQUIREMENTS, [id=#522]
+                  :     :     :  +- *(7) Project [c_nationkey#35, l_suppkey#98, l_extendedprice#101, l_discount#102]
+                  :     :     :     +- *(7) SortMergeJoin [o_orderkey#162], [l_orderkey#96], Inner
+                  :     :     :        :- *(4) Sort [o_orderkey#162 ASC NULLS FIRST], false, 0
+                  :     :     :        :  +- Exchange hashpartitioning(o_orderkey#162, 200), ENSURE_REQUIREMENTS, [id=#506]
+                  :     :     :        :     +- *(3) Project [c_nationkey#35, o_orderkey#162]
+                  :     :     :        :        +- *(3) ShuffledHashJoin [c_custkey#32], [o_custkey#163], Inner, BuildLeft
+                  :     :     :        :           :- Exchange hashpartitioning(c_custkey#32, 200), ENSURE_REQUIREMENTS, [id=#495]
+                  :     :     :        :           :  +- *(1) Filter (isnotnull(c_custkey#32) AND isnotnull(c_nationkey#35))
+                  :     :     :        :           :     +- FileScan csv [c_custkey#32,c_nationkey#35] Batched: false, DataFilters: [isnotnull(c_custkey#32), isnotnull(c_nationkey#35)], Format: CSV, Location: InMemoryFileIndex[hdfs://parasilo-11.rennes.grid5000.fr:9000/user/diplomma/data/data100/customer...., PartitionFilters: [], PushedFilters: [IsNotNull(c_custkey), IsNotNull(c_nationkey)], ReadSchema: struct<c_custkey:int,c_nationkey:int>
+                  :     :     :        :           +- Exchange hashpartitioning(o_custkey#163, 200), ENSURE_REQUIREMENTS, [id=#501]
+                  :     :     :        :              +- *(2) Project [o_orderkey#162, o_custkey#163]
+                  :     :     :        :                 +- *(2) Filter ((((isnotnull(o_orderdate#166) AND (cast(o_orderdate#166 as date) >= 8766)) AND (cast(o_orderdate#166 as date) < 9131)) AND isnotnull(o_custkey#163)) AND isnotnull(o_orderkey#162))
+                  :     :     :        :                    +- FileScan csv [o_orderkey#162,o_custkey#163,o_orderdate#166] Batched: false, DataFilters: [isnotnull(o_orderdate#166), (cast(o_orderdate#166 as date) >= 8766), (cast(o_orderdate#166 as da..., Format: CSV, Location: InMemoryFileIndex[hdfs://parasilo-11.rennes.grid5000.fr:9000/user/diplomma/data/data100/orders.tbl], PartitionFilters: [], PushedFilters: [IsNotNull(o_orderdate), IsNotNull(o_custkey), IsNotNull(o_orderkey)], ReadSchema: struct<o_orderkey:int,o_custkey:int,o_orderdate:string>
+                  :     :     :        +- *(6) Sort [l_orderkey#96 ASC NULLS FIRST], false, 0
+                  :     :     :           +- Exchange hashpartitioning(l_orderkey#96, 200), ENSURE_REQUIREMENTS, [id=#514]
+                  :     :     :              +- *(5) Filter (isnotnull(l_orderkey#96) AND isnotnull(l_suppkey#98))
+                  :     :     :                 +- FileScan csv [l_orderkey#96,l_suppkey#98,l_extendedprice#101,l_discount#102] Batched: false, DataFilters: [isnotnull(l_orderkey#96), isnotnull(l_suppkey#98)], Format: CSV, Location: InMemoryFileIndex[hdfs://parasilo-11.rennes.grid5000.fr:9000/user/diplomma/data/data100/lineitem...., PartitionFilters: [], PushedFilters: [IsNotNull(l_orderkey), IsNotNull(l_suppkey)], ReadSchema: struct<l_orderkey:int,l_suppkey:int,l_extendedprice:double,l_discount:double>
+                  :     :     +- Exchange hashpartitioning(s_suppkey#210, s_nationkey#213, 200), ENSURE_REQUIREMENTS, [id=#527]
+                  :     :        +- *(8) Filter (isnotnull(s_suppkey#210) AND isnotnull(s_nationkey#213))
+                  :     :           +- FileScan csv [s_suppkey#210,s_nationkey#213] Batched: false, DataFilters: [isnotnull(s_suppkey#210), isnotnull(s_nationkey#213)], Format: CSV, Location: InMemoryFileIndex[hdfs://parasilo-11.rennes.grid5000.fr:9000/user/diplomma/data/data100/supplier...., PartitionFilters: [], PushedFilters: [IsNotNull(s_suppkey), IsNotNull(s_nationkey)], ReadSchema: struct<s_suppkey:int,s_nationkey:int>
+                  :     +- BroadcastExchange HashedRelationBroadcastMode(List(cast(input[0, int, false] as bigint)),false), [id=#534]
+                  :        +- *(9) Filter (isnotnull(n_nationkey#248) AND isnotnull(n_regionkey#250))
+                  :           +- FileScan csv [n_nationkey#248,n_name#249,n_regionkey#250] Batched: false, DataFilters: [isnotnull(n_nationkey#248), isnotnull(n_regionkey#250)], Format: CSV, Location: InMemoryFileIndex[hdfs://parasilo-11.rennes.grid5000.fr:9000/user/diplomma/data/data100/nation.tbl], PartitionFilters: [], PushedFilters: [IsNotNull(n_nationkey), IsNotNull(n_regionkey)], ReadSchema: struct<n_nationkey:int,n_name:string,n_regionkey:int>
+                  +- BroadcastExchange HashedRelationBroadcastMode(List(cast(input[0, int, true] as bigint)),false), [id=#542]
+                     +- *(10) Project [r_regionkey#278]
+                        +- *(10) Filter ((isnotnull(r_name#279) AND (r_name#279 = ASIA)) AND isnotnull(r_regionkey#278))
+                           +- FileScan csv [r_regionkey#278,r_name#279] Batched: false, DataFilters: [isnotnull(r_name#279), (r_name#279 = ASIA), isnotnull(r_regionkey#278)], Format: CSV, Location: InMemoryFileIndex[hdfs://parasilo-11.rennes.grid5000.fr:9000/user/diplomma/data/data100/region.tbl], PartitionFilters: [], PushedFilters: [IsNotNull(r_name), EqualTo(r_name,ASIA), IsNotNull(r_regionkey)], ReadSchema: struct<r_regionkey:int,r_name:string>
+
+
+Partitions no customer orders lineitem supplier 19 133 593 8

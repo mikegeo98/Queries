@@ -1,0 +1,41 @@
++----------+-----------+--------------+
+|l_orderkey|o_orderdate|o_shippriority|
++----------+-----------+--------------+
+|      3749| 1995-02-24|             0|
+|      3749| 1995-02-24|             0|
+|      3749| 1995-02-24|             0|
+|      3749| 1995-02-24|             0|
+|      3749| 1995-02-24|             0|
+|      3749| 1995-02-24|             0|
+|     36355| 1994-12-03|             0|
+|     40386| 1995-02-19|             0|
+|     40386| 1995-02-19|             0|
+|     40386| 1995-02-19|             0|
+|     40386| 1995-02-19|             0|
+|     53634| 1995-02-22|             0|
+|     65478| 1994-12-07|             0|
+|     79361| 1995-01-12|             0|
+|     87616| 1995-02-20|             0|
+|     87616| 1995-02-20|             0|
+|     87616| 1995-02-20|             0|
+|    133730| 1995-03-06|             0|
+|    133730| 1995-03-06|             0|
+|    133730| 1995-03-06|             0|
++----------+-----------+--------------+
+only showing top 20 rows
+
+== Physical Plan ==
+*(5) Project [l_orderkey#48, o_orderdate#118, o_shippriority#121]
++- *(5) SortMergeJoin [o_orderkey#114], [l_orderkey#48], Inner
+   :- *(2) Sort [o_orderkey#114 ASC NULLS FIRST], false, 0
+   :  +- Exchange hashpartitioning(o_orderkey#114, 200), ENSURE_REQUIREMENTS, [id=#137]
+   :     +- *(1) Filter ((isnotnull(o_orderdate#118) AND (cast(o_orderdate#118 as date) < 9204)) AND isnotnull(o_orderkey#114))
+   :        +- FileScan csv [o_orderkey#114,o_orderdate#118,o_shippriority#121] Batched: false, DataFilters: [isnotnull(o_orderdate#118), (cast(o_orderdate#118 as date) < 9204), isnotnull(o_orderkey#114)], Format: CSV, Location: InMemoryFileIndex[hdfs://parasilo-10.rennes.grid5000.fr:9000/user/diplomma/data/data10/orders.tbl], PartitionFilters: [], PushedFilters: [IsNotNull(o_orderdate), IsNotNull(o_orderkey)], ReadSchema: struct<o_orderkey:int,o_orderdate:string,o_shippriority:int>
+   +- *(4) Sort [l_orderkey#48 ASC NULLS FIRST], false, 0
+      +- Exchange hashpartitioning(l_orderkey#48, 200), ENSURE_REQUIREMENTS, [id=#146]
+         +- *(3) Project [l_orderkey#48]
+            +- *(3) Filter ((isnotnull(l_shipdate#58) AND (cast(l_shipdate#58 as date) > 9204)) AND isnotnull(l_orderkey#48))
+               +- FileScan csv [l_orderkey#48,l_shipdate#58] Batched: false, DataFilters: [isnotnull(l_shipdate#58), (cast(l_shipdate#58 as date) > 9204), isnotnull(l_orderkey#48)], Format: CSV, Location: InMemoryFileIndex[hdfs://parasilo-10.rennes.grid5000.fr:9000/user/diplomma/data/data10/lineitem.tbl], PartitionFilters: [], PushedFilters: [IsNotNull(l_shipdate), IsNotNull(l_orderkey)], ReadSchema: struct<l_orderkey:int,l_shipdate:string>
+
+
+Partitions no orders lineitem 20 58

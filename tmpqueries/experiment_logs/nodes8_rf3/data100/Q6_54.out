@@ -1,0 +1,17 @@
++--------------------+
+|             revenue|
++--------------------+
+|1.233042688846370...|
++--------------------+
+
+== Physical Plan ==
+*(2) HashAggregate(keys=[], functions=[sum((l_extendedprice#53 * l_discount#54))])
++- Exchange SinglePartition, ENSURE_REQUIREMENTS, [id=#68]
+   +- *(1) HashAggregate(keys=[], functions=[partial_sum((l_extendedprice#53 * l_discount#54))])
+      +- *(1) Project [l_extendedprice#53, l_discount#54]
+         +- *(1) Filter (((((((isnotnull(l_shipdate#58) AND isnotnull(l_discount#54)) AND isnotnull(l_quantity#52)) AND (cast(l_shipdate#58 as date) >= 8766)) AND (cast(l_shipdate#58 as date) < 9131)) AND (l_discount#54 >= 0.05)) AND (l_discount#54 <= 0.07)) AND (l_quantity#52 < 24.0))
+            +- FileScan csv [l_quantity#52,l_extendedprice#53,l_discount#54,l_shipdate#58] Batched: false, DataFilters: [isnotnull(l_shipdate#58), isnotnull(l_discount#54), isnotnull(l_quantity#52), (cast(l_shipdate#5..., Format: CSV, Location: InMemoryFileIndex[hdfs://parasilo-11.rennes.grid5000.fr:9000/user/diplomma/data/data100/lineitem...., PartitionFilters: [], PushedFilters: [IsNotNull(l_shipdate), IsNotNull(l_discount), IsNotNull(l_quantity), GreaterThanOrEqual(l_discou..., ReadSchema: struct<l_quantity:double,l_extendedprice:double,l_discount:double,l_shipdate:string>
+
+
+Runtime:  0:00:00.135957
+Lineitem 593

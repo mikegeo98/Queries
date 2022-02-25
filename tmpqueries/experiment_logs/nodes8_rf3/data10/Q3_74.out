@@ -1,0 +1,51 @@
+We are here
++----------+------------------+-----------+--------------+
+|l_orderkey|           revenue|o_orderdate|o_shippriority|
++----------+------------------+-----------+--------------+
+|   4791171|440715.21849999996| 1995-02-23|             0|
+|  46678469|        439855.325| 1995-01-27|             0|
+|  23906758|432728.57369999995| 1995-03-14|             0|
+|  23861382|       428739.1368| 1995-03-09|             0|
+|  59393639|       426036.0662| 1995-02-12|             0|
+|   3355202|       425100.6657| 1995-03-04|             0|
+|   9806272|425088.05679999996| 1995-03-13|             0|
+|  22810436|        423231.969| 1995-01-02|             0|
+|  16384100|       421478.7294| 1995-03-02|             0|
+|  52974151|415367.11950000003| 1995-02-05|             0|
+|   3778628|       411836.2827| 1995-02-25|             0|
+|  21353479|       410325.6287| 1995-03-04|             0|
+|  20524164|409472.08670000004| 1995-03-04|             0|
+|  33059171|       409156.4696| 1995-02-16|             0|
+|   8207586|407736.96699999995| 1995-03-04|             0|
+|   9365575|406258.57389999996| 1995-03-12|             0|
+|   9874305|       404121.8245| 1995-01-19|             0|
+|   4860004|       401782.3025| 1995-02-22|             0|
+|  45512673|       400541.9454| 1995-02-08|             0|
+|  53144198|399667.55039999995| 1995-02-17|             0|
++----------+------------------+-----------+--------------+
+only showing top 20 rows
+
+== Physical Plan ==
+*(6) Sort [revenue#250 DESC NULLS LAST, o_orderdate#118 ASC NULLS FIRST], true, 0
++- Exchange rangepartitioning(revenue#250 DESC NULLS LAST, o_orderdate#118 ASC NULLS FIRST, 200), ENSURE_REQUIREMENTS, [id=#273]
+   +- *(5) HashAggregate(keys=[l_orderkey#48, o_orderdate#118, o_shippriority#121], functions=[sum((l_extendedprice#53 * (1.0 - l_discount#54)))])
+      +- *(5) HashAggregate(keys=[l_orderkey#48, o_orderdate#118, o_shippriority#121], functions=[partial_sum((l_extendedprice#53 * (1.0 - l_discount#54)))])
+         +- *(5) Project [o_orderdate#118, o_shippriority#121, l_orderkey#48, l_extendedprice#53, l_discount#54]
+            +- *(5) ShuffledHashJoin [o_orderkey#114], [l_orderkey#48], Inner, BuildRight
+               :- Exchange hashpartitioning(o_orderkey#114, 200), ENSURE_REQUIREMENTS, [id=#260]
+               :  +- *(3) Project [o_orderkey#114, o_orderdate#118, o_shippriority#121]
+               :     +- *(3) ShuffledHashJoin [c_custkey#164], [o_custkey#115], Inner, BuildLeft
+               :        :- Exchange hashpartitioning(c_custkey#164, 200), ENSURE_REQUIREMENTS, [id=#250]
+               :        :  +- *(1) Project [c_custkey#164]
+               :        :     +- *(1) Filter ((isnotnull(c_mktsegment#170) AND (c_mktsegment#170 = BUILDING)) AND isnotnull(c_custkey#164))
+               :        :        +- FileScan csv [c_custkey#164,c_mktsegment#170] Batched: false, DataFilters: [isnotnull(c_mktsegment#170), (c_mktsegment#170 = BUILDING), isnotnull(c_custkey#164)], Format: CSV, Location: InMemoryFileIndex[hdfs://parasilo-10.rennes.grid5000.fr:9000/user/diplomma/data/data10/customer.tbl], PartitionFilters: [], PushedFilters: [IsNotNull(c_mktsegment), EqualTo(c_mktsegment,BUILDING), IsNotNull(c_custkey)], ReadSchema: struct<c_custkey:int,c_mktsegment:string>
+               :        +- Exchange hashpartitioning(o_custkey#115, 200), ENSURE_REQUIREMENTS, [id=#255]
+               :           +- *(2) Filter (((isnotnull(o_orderdate#118) AND (cast(o_orderdate#118 as date) < 9204)) AND isnotnull(o_custkey#115)) AND isnotnull(o_orderkey#114))
+               :              +- FileScan csv [o_orderkey#114,o_custkey#115,o_orderdate#118,o_shippriority#121] Batched: false, DataFilters: [isnotnull(o_orderdate#118), (cast(o_orderdate#118 as date) < 9204), isnotnull(o_custkey#115), is..., Format: CSV, Location: InMemoryFileIndex[hdfs://parasilo-10.rennes.grid5000.fr:9000/user/diplomma/data/data10/orders.tbl], PartitionFilters: [], PushedFilters: [IsNotNull(o_orderdate), IsNotNull(o_custkey), IsNotNull(o_orderkey)], ReadSchema: struct<o_orderkey:int,o_custkey:int,o_orderdate:string,o_shippriority:int>
+               +- Exchange hashpartitioning(l_orderkey#48, 200), ENSURE_REQUIREMENTS, [id=#266]
+                  +- *(4) Project [l_orderkey#48, l_extendedprice#53, l_discount#54]
+                     +- *(4) Filter ((isnotnull(l_shipdate#58) AND (cast(l_shipdate#58 as date) > 9204)) AND isnotnull(l_orderkey#48))
+                        +- FileScan csv [l_orderkey#48,l_extendedprice#53,l_discount#54,l_shipdate#58] Batched: false, DataFilters: [isnotnull(l_shipdate#58), (cast(l_shipdate#58 as date) > 9204), isnotnull(l_orderkey#48)], Format: CSV, Location: InMemoryFileIndex[hdfs://parasilo-10.rennes.grid5000.fr:9000/user/diplomma/data/data10/lineitem.tbl], PartitionFilters: [], PushedFilters: [IsNotNull(l_shipdate), IsNotNull(l_orderkey)], ReadSchema: struct<l_orderkey:int,l_extendedprice:double,l_discount:double,l_shipdate:string>
+
+
+Partitions no customer orders lineitem 28 28 58

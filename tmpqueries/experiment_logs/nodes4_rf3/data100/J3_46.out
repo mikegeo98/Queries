@@ -1,0 +1,39 @@
++---------+-----------+--------------+
+|c_custkey|o_orderdate|o_shippriority|
++---------+-----------+--------------+
+|  2955100| 1995-03-08|             0|
+| 10990739| 1992-03-20|             0|
+|   570913| 1992-03-28|             0|
+| 12927823| 1992-08-27|             0|
+|  3857311| 1995-01-01|             0|
+| 11977105| 1994-10-12|             0|
+|  5577178| 1995-01-13|             0|
+|  9317461| 1994-01-04|             0|
+|  3598486| 1993-05-12|             0|
+|  8380729| 1993-01-19|             0|
+|  2463406| 1993-08-04|             0|
+|  6597022| 1994-05-10|             0|
+|  4118942| 1995-01-12|             0|
+|  7231933| 1992-05-25|             0|
+| 10434886| 1992-06-15|             0|
+| 10725691| 1992-06-08|             0|
+|  1511572| 1994-09-06|             0|
+|  8761591| 1993-04-12|             0|
+|  7360772| 1992-01-19|             0|
+|  7173463| 1993-08-04|             0|
++---------+-----------+--------------+
+only showing top 20 rows
+
+== Physical Plan ==
+*(3) Project [c_custkey#84, o_orderdate#38, o_shippriority#41]
++- *(3) ShuffledHashJoin [c_custkey#84], [o_custkey#35], Inner, BuildLeft
+   :- Exchange hashpartitioning(c_custkey#84, 200), ENSURE_REQUIREMENTS, [id=#128]
+   :  +- *(1) Project [c_custkey#84]
+   :     +- *(1) Filter ((isnotnull(c_mktsegment#90) AND (c_mktsegment#90 = BUILDING)) AND isnotnull(c_custkey#84))
+   :        +- FileScan csv [c_custkey#84,c_mktsegment#90] Batched: false, DataFilters: [isnotnull(c_mktsegment#90), (c_mktsegment#90 = BUILDING), isnotnull(c_custkey#84)], Format: CSV, Location: InMemoryFileIndex[hdfs://parasilo-11.rennes.grid5000.fr:9000/user/diplomma/data/data100/customer...., PartitionFilters: [], PushedFilters: [IsNotNull(c_mktsegment), EqualTo(c_mktsegment,BUILDING), IsNotNull(c_custkey)], ReadSchema: struct<c_custkey:int,c_mktsegment:string>
+   +- Exchange hashpartitioning(o_custkey#35, 200), ENSURE_REQUIREMENTS, [id=#133]
+      +- *(2) Filter ((isnotnull(o_orderdate#38) AND (cast(o_orderdate#38 as date) < 9204)) AND isnotnull(o_custkey#35))
+         +- FileScan csv [o_custkey#35,o_orderdate#38,o_shippriority#41] Batched: false, DataFilters: [isnotnull(o_orderdate#38), (cast(o_orderdate#38 as date) < 9204), isnotnull(o_custkey#35)], Format: CSV, Location: InMemoryFileIndex[hdfs://parasilo-11.rennes.grid5000.fr:9000/user/diplomma/data/data100/orders.tbl], PartitionFilters: [], PushedFilters: [IsNotNull(o_orderdate), IsNotNull(o_custkey)], ReadSchema: struct<o_custkey:int,o_orderdate:string,o_shippriority:int>
+
+
+Partitions no customer orders 24 133

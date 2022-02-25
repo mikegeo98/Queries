@@ -1,0 +1,22 @@
++------------+------------+-------------+--------------------+--------------------+--------------------+------------------+-----------------+--------------------+-----------+
+|l_returnflag|l_linestatus|      sum_qty|      sum_base_price|      sum_disc_price|          sum_charge|           avg_qty|        avg_price|            avg_disc|count_order|
++------------+------------+-------------+--------------------+--------------------+--------------------+------------------+-----------------+--------------------+-----------+
+|           A|           F|3.775127758E9|5.660776097194437...|5.377736398183935E12|5.592847429515925E12|25.499370423275426|38236.11698430481| 0.05000224353100115|  148047881|
+|           N|           F|  9.8553062E7|  1.4777109838598E11|1.403849659650347E11|1.459997930327758E11|25.501556956882876|38237.19938880451| 0.04998528433805346|    3864590|
+|           N|           O|7.436302976E9|1.115072568137361E13|1.059319530823485...|1.101693224818366...|25.500009404374193|38237.22764636101| 0.04999791831565586|  291619617|
+|           R|           F| 3.77572497E9|5.661603032745325E12|5.378513563915413E12|5.593662252666921E12| 25.50006628406532|38236.69725845287|0.050001304339726334|  148067261|
++------------+------------+-------------+--------------------+--------------------+--------------------+------------------+-----------------+--------------------+-----------+
+
+== Physical Plan ==
+*(3) Sort [l_returnflag#56 ASC NULLS FIRST, l_linestatus#57 ASC NULLS FIRST], true, 0
++- Exchange rangepartitioning(l_returnflag#56 ASC NULLS FIRST, l_linestatus#57 ASC NULLS FIRST, 200), ENSURE_REQUIREMENTS, [id=#84]
+   +- *(2) HashAggregate(keys=[l_returnflag#56, l_linestatus#57], functions=[sum(l_quantity#52), sum(l_extendedprice#53), sum((l_extendedprice#53 * (1.0 - l_discount#54))), sum(((l_extendedprice#53 * (1.0 - l_discount#54)) * (1.0 + l_tax#55))), avg(l_quantity#52), avg(l_extendedprice#53), avg(l_discount#54), count(1)])
+      +- Exchange hashpartitioning(l_returnflag#56, l_linestatus#57, 200), ENSURE_REQUIREMENTS, [id=#80]
+         +- *(1) HashAggregate(keys=[l_returnflag#56, l_linestatus#57], functions=[partial_sum(l_quantity#52), partial_sum(l_extendedprice#53), partial_sum((l_extendedprice#53 * (1.0 - l_discount#54))), partial_sum(((l_extendedprice#53 * (1.0 - l_discount#54)) * (1.0 + l_tax#55))), partial_avg(l_quantity#52), partial_avg(l_extendedprice#53), partial_avg(l_discount#54), partial_count(1)])
+            +- *(1) Project [l_quantity#52, l_extendedprice#53, l_discount#54, l_tax#55, l_returnflag#56, l_linestatus#57]
+               +- *(1) Filter (isnotnull(l_shipdate#58) AND (cast(l_shipdate#58 as date) <= 10471))
+                  +- FileScan csv [l_quantity#52,l_extendedprice#53,l_discount#54,l_tax#55,l_returnflag#56,l_linestatus#57,l_shipdate#58] Batched: false, DataFilters: [isnotnull(l_shipdate#58), (cast(l_shipdate#58 as date) <= 10471)], Format: CSV, Location: InMemoryFileIndex[hdfs://parasilo-11.rennes.grid5000.fr:9000/user/diplomma/data/data100/lineitem...., PartitionFilters: [], PushedFilters: [IsNotNull(l_shipdate)], ReadSchema: struct<l_quantity:double,l_extendedprice:double,l_discount:double,l_tax:double,l_returnflag:strin...
+
+
+Runtime:  0:00:00.186713
+Lineitem 593

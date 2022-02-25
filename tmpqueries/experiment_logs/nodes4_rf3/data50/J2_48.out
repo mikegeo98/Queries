@@ -1,0 +1,39 @@
++--------------------+--------+-----------+
+|              p_name| p_brand|ps_availqty|
++--------------------+--------+-----------+
+|honeydew papaya f...|Brand#25|       2626|
+|honeydew papaya f...|Brand#25|       6397|
+|honeydew papaya f...|Brand#25|       3099|
+|honeydew papaya f...|Brand#25|       6974|
+|sandy honeydew do...|Brand#13|        471|
+|sandy honeydew do...|Brand#13|       3387|
+|sandy honeydew do...|Brand#13|       9947|
+|sandy honeydew do...|Brand#13|       2826|
+|orchid mint black...|Brand#43|       4807|
+|orchid mint black...|Brand#43|       8771|
+|orchid mint black...|Brand#43|       5393|
+|orchid mint black...|Brand#43|       7445|
+|ivory powder ligh...|Brand#52|       4565|
+|ivory powder ligh...|Brand#52|         49|
+|ivory powder ligh...|Brand#52|       4788|
+|ivory powder ligh...|Brand#52|       3940|
+|dodger saddle dar...|Brand#52|       6752|
+|dodger saddle dar...|Brand#52|       3934|
+|dodger saddle dar...|Brand#52|       1610|
+|dodger saddle dar...|Brand#52|       5874|
++--------------------+--------+-----------+
+only showing top 20 rows
+
+== Physical Plan ==
+*(3) Project [p_name#35, p_brand#37, ps_availqty#80]
++- *(3) ShuffledHashJoin [p_partkey#34], [ps_partkey#78], Inner, BuildLeft
+   :- Exchange hashpartitioning(p_partkey#34, 200), ENSURE_REQUIREMENTS, [id=#128]
+   :  +- *(1) Project [p_partkey#34, p_name#35, p_brand#37]
+   :     +- *(1) Filter ((((isnotnull(p_size#39) AND isnotnull(p_type#38)) AND (p_size#39 = 15)) AND EndsWith(p_type#38, BRASS)) AND isnotnull(p_partkey#34))
+   :        +- FileScan csv [p_partkey#34,p_name#35,p_brand#37,p_type#38,p_size#39] Batched: false, DataFilters: [isnotnull(p_size#39), isnotnull(p_type#38), (p_size#39 = 15), EndsWith(p_type#38, BRASS), isnotn..., Format: CSV, Location: InMemoryFileIndex[hdfs://parasilo-11.rennes.grid5000.fr:9000/user/diplomma/data/data50/part.tbl], PartitionFilters: [], PushedFilters: [IsNotNull(p_size), IsNotNull(p_type), EqualTo(p_size,15), StringEndsWith(p_type,BRASS), IsNotNul..., ReadSchema: struct<p_partkey:int,p_name:string,p_brand:string,p_type:string,p_size:int>
+   +- Exchange hashpartitioning(ps_partkey#78, 200), ENSURE_REQUIREMENTS, [id=#133]
+      +- *(2) Filter isnotnull(ps_partkey#78)
+         +- FileScan csv [ps_partkey#78,ps_availqty#80] Batched: false, DataFilters: [isnotnull(ps_partkey#78)], Format: CSV, Location: InMemoryFileIndex[hdfs://parasilo-11.rennes.grid5000.fr:9000/user/diplomma/data/data50/partsupp.tbl], PartitionFilters: [], PushedFilters: [IsNotNull(ps_partkey)], ReadSchema: struct<ps_partkey:int,ps_availqty:int>
+
+
+Partitions no customer part partsupp 32 46

@@ -1,0 +1,60 @@
++---------+------------------+-----------------+---------+--------------+--------------------+---------------+--------------------+
+|c_custkey|            c_name|          revenue|c_acctbal|        n_name|           c_address|        c_phone|           c_comment|
++---------+------------------+-----------------+---------+--------------+--------------------+---------------+--------------------+
+|  7450894|Customer#007450894|      936768.8469|   927.18|     ARGENTINA|hxPXtdJ84fyOre7gM...|11-833-256-7879|packages are insi...|
+|  9739771|Customer#009739771|      842966.5285|  1286.48|        JORDAN|  tC7c8bZ7 By6nEoHRL|23-281-450-4794|p furiously depos...|
+|  4571035|Customer#004571035|838705.6168000001|  6704.13|UNITED KINGDOM|20IDf0Fx1ahSqImFX...|33-138-285-3770|e carefully acros...|
+|   637855|Customer#000637855|812034.3777999999|  2674.86|    MOZAMBIQUE|         q5TskwlicGP|26-852-120-2850|al instructions s...|
+| 10781974|Customer#010781974|801735.5176000001|  5079.77|       ROMANIA|Cv2p,eRTt8C  WwJV...|29-651-722-6239|egular notornis. ...|
+| 11361613|Customer#011361613|      800558.4337|  4644.71|     INDONESIA|     jWKghIqWp5Vzt2s|19-344-539-9187|latelets cajole s...|
+|  1259743|Customer#001259743|793274.7845999999|  2592.74|      ETHIOPIA|YVe ,jDra4xnKtfzS...|15-733-636-6732|eposits sleep acc...|
+|  5154136|Customer#005154136|787191.1959000002|  1028.97|       MOROCCO|Y,cjCdRGVz1j g8YQ...|25-841-379-9394|boost quickly sly...|
+| 14986552|Customer#014986552|781645.8637999999|  2678.94|     ARGENTINA|          tl5yB8W1C0|11-671-762-3613|ual ideas sleep d...|
+|  2905816|Customer#002905816|778729.4413999999|  5085.53| UNITED STATES|          bcLOp3b9PA|34-217-584-5820| the furiously ex...|
+|  6184141|Customer#006184141|772721.0972999999|  5901.88|        BRAZIL|YouilzzEFBn8Q6atx...|12-563-743-4211|en instructions b...|
+|  7852024|Customer#007852024|      769688.6616|  1197.57|         INDIA|2 lZJ,yBgPkRHVO6y...|18-141-580-3886|osits haggle quic...|
+|  7183231|Customer#007183231|768455.8796000001|  -683.01|         INDIA|     ozSXeIbCwiOQJhN|18-270-127-8463|braids. furiously...|
+|  1627651|Customer#001627651|      768300.3006|  3059.82|       MOROCCO|cp3JS2a9Yu8cBKaDr...|25-732-202-4862|ts cajole careful...|
+| 13624771|Customer#013624771|767856.1562000001|  -168.68|          IRAN|sxMG5r82qFaZLAqmC...|20-919-886-5399|the, final reques...|
+| 13896424|Customer#013896424|760957.6214000001|  3798.91|     INDONESIA|          csALLLLaTB|19-494-837-4503| cajole carefully...|
+|  4926817|Customer#004926817|758756.8533000001|  5462.22|        RUSSIA|       X9PvpAssUMkoi|32-610-751-1595|carefully unusual...|
+|   319150|Customer#000319150|      757235.8949|  3257.68|          IRAN|l1KV7LZ3ih7cgjuQU...|20-837-276-7259|ly ironic request...|
+|  5894188|Customer#005894188|756482.0641000001|   3062.0|        BRAZIL|1PrX23NPGc 81N8nM...|12-372-345-6045|unts after the sl...|
+|  3387028|Customer#003387028|      755937.5757|  3726.64|      ETHIOPIA|       j4HWo86pMyWym|15-880-219-8399|ckly among the fu...|
++---------+------------------+-----------------+---------+--------------+--------------------+---------------+--------------------+
+only showing top 20 rows
+
+== Physical Plan ==
+*(12) Sort [revenue#307 DESC NULLS LAST], true, 0
++- Exchange rangepartitioning(revenue#307 DESC NULLS LAST, 200), ENSURE_REQUIREMENTS, [id=#395]
+   +- *(11) HashAggregate(keys=[c_custkey#164, c_name#165, c_acctbal#169, c_phone#168, n_name#205, c_address#166, c_comment#171], functions=[sum((l_extendedprice#53 * (1.0 - l_discount#54)))])
+      +- Exchange hashpartitioning(c_custkey#164, c_name#165, c_acctbal#169, c_phone#168, n_name#205, c_address#166, c_comment#171, 200), ENSURE_REQUIREMENTS, [id=#391]
+         +- *(10) HashAggregate(keys=[c_custkey#164, c_name#165, knownfloatingpointnormalized(normalizenanandzero(c_acctbal#169)) AS c_acctbal#169, c_phone#168, n_name#205, c_address#166, c_comment#171], functions=[partial_sum((l_extendedprice#53 * (1.0 - l_discount#54)))])
+            +- *(10) Project [c_custkey#164, c_name#165, c_address#166, c_phone#168, c_acctbal#169, c_comment#171, l_extendedprice#53, l_discount#54, n_name#205]
+               +- *(10) BroadcastHashJoin [c_nationkey#167], [n_nationkey#204], Inner, BuildRight, false
+                  :- *(10) Project [c_custkey#164, c_name#165, c_address#166, c_nationkey#167, c_phone#168, c_acctbal#169, c_comment#171, l_extendedprice#53, l_discount#54]
+                  :  +- *(10) SortMergeJoin [o_orderkey#114], [l_orderkey#48], Inner
+                  :     :- *(6) Sort [o_orderkey#114 ASC NULLS FIRST], false, 0
+                  :     :  +- Exchange hashpartitioning(o_orderkey#114, 200), ENSURE_REQUIREMENTS, [id=#366]
+                  :     :     +- *(5) Project [c_custkey#164, c_name#165, c_address#166, c_nationkey#167, c_phone#168, c_acctbal#169, c_comment#171, o_orderkey#114]
+                  :     :        +- *(5) SortMergeJoin [c_custkey#164], [o_custkey#115], Inner
+                  :     :           :- *(2) Sort [c_custkey#164 ASC NULLS FIRST], false, 0
+                  :     :           :  +- Exchange hashpartitioning(c_custkey#164, 200), ENSURE_REQUIREMENTS, [id=#349]
+                  :     :           :     +- *(1) Filter (isnotnull(c_custkey#164) AND isnotnull(c_nationkey#167))
+                  :     :           :        +- FileScan csv [c_custkey#164,c_name#165,c_address#166,c_nationkey#167,c_phone#168,c_acctbal#169,c_comment#171] Batched: false, DataFilters: [isnotnull(c_custkey#164), isnotnull(c_nationkey#167)], Format: CSV, Location: InMemoryFileIndex[hdfs://parasilo-11.rennes.grid5000.fr:9000/user/diplomma/data/data100/customer...., PartitionFilters: [], PushedFilters: [IsNotNull(c_custkey), IsNotNull(c_nationkey)], ReadSchema: struct<c_custkey:int,c_name:string,c_address:string,c_nationkey:int,c_phone:string,c_acctbal:doub...
+                  :     :           +- *(4) Sort [o_custkey#115 ASC NULLS FIRST], false, 0
+                  :     :              +- Exchange hashpartitioning(o_custkey#115, 200), ENSURE_REQUIREMENTS, [id=#358]
+                  :     :                 +- *(3) Project [o_orderkey#114, o_custkey#115]
+                  :     :                    +- *(3) Filter ((((isnotnull(o_orderdate#118) AND (cast(o_orderdate#118 as date) >= 8674)) AND (cast(o_orderdate#118 as date) < 8766)) AND isnotnull(o_custkey#115)) AND isnotnull(o_orderkey#114))
+                  :     :                       +- FileScan csv [o_orderkey#114,o_custkey#115,o_orderdate#118] Batched: false, DataFilters: [isnotnull(o_orderdate#118), (cast(o_orderdate#118 as date) >= 8674), (cast(o_orderdate#118 as da..., Format: CSV, Location: InMemoryFileIndex[hdfs://parasilo-11.rennes.grid5000.fr:9000/user/diplomma/data/data100/orders.tbl], PartitionFilters: [], PushedFilters: [IsNotNull(o_orderdate), IsNotNull(o_custkey), IsNotNull(o_orderkey)], ReadSchema: struct<o_orderkey:int,o_custkey:int,o_orderdate:string>
+                  :     +- *(8) Sort [l_orderkey#48 ASC NULLS FIRST], false, 0
+                  :        +- Exchange hashpartitioning(l_orderkey#48, 200), ENSURE_REQUIREMENTS, [id=#375]
+                  :           +- *(7) Project [l_orderkey#48, l_extendedprice#53, l_discount#54]
+                  :              +- *(7) Filter ((isnotnull(l_returnflag#56) AND (l_returnflag#56 = R)) AND isnotnull(l_orderkey#48))
+                  :                 +- FileScan csv [l_orderkey#48,l_extendedprice#53,l_discount#54,l_returnflag#56] Batched: false, DataFilters: [isnotnull(l_returnflag#56), (l_returnflag#56 = R), isnotnull(l_orderkey#48)], Format: CSV, Location: InMemoryFileIndex[hdfs://parasilo-11.rennes.grid5000.fr:9000/user/diplomma/data/data100/lineitem...., PartitionFilters: [], PushedFilters: [IsNotNull(l_returnflag), EqualTo(l_returnflag,R), IsNotNull(l_orderkey)], ReadSchema: struct<l_orderkey:int,l_extendedprice:double,l_discount:double,l_returnflag:string>
+                  +- BroadcastExchange HashedRelationBroadcastMode(List(cast(input[0, int, false] as bigint)),false), [id=#385]
+                     +- *(9) Filter isnotnull(n_nationkey#204)
+                        +- FileScan csv [n_nationkey#204,n_name#205] Batched: false, DataFilters: [isnotnull(n_nationkey#204)], Format: CSV, Location: InMemoryFileIndex[hdfs://parasilo-11.rennes.grid5000.fr:9000/user/diplomma/data/data100/nation.tbl], PartitionFilters: [], PushedFilters: [IsNotNull(n_nationkey)], ReadSchema: struct<n_nationkey:int,n_name:string>
+
+
+Partitions no customer orders lineitem 19 133 593

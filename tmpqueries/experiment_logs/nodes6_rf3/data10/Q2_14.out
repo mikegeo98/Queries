@@ -1,0 +1,87 @@
+We are here
++---------+------------------+--------------+---------+--------------+--------------------+---------------+--------------------+
+|s_acctbal|            s_name|        n_name|p_partkey|        p_mfgr|           s_address|        s_phone|           s_comment|
++---------+------------------+--------------+---------+--------------+--------------------+---------------+--------------------+
+|  2759.08|Supplier#000045307|       GERMANY|  1045306|Manufacturer#3|  qWJtT6mLe8XbRUquIS|17-528-864-7439| slyly blithely r...|
+|  9831.95|Supplier#000057380|       ROMANIA|  1682331|Manufacturer#5|       OISAlNhoacPOx|29-915-260-4712|ans wake special,...|
+|  8250.18|Supplier#000063106|UNITED KINGDOM|   188102|Manufacturer#1|6QOdHMeUAulxjoMwL...|33-500-984-1444|he quickly ironic...|
+|   302.55|Supplier#000047084|       ROMANIA|   422079|Manufacturer#3|kBFmWF4OcYSGbTGXb...|29-459-440-5360| even hockey play...|
+|  7503.11|Supplier#000015447|        RUSSIA|  1165424|Manufacturer#3|njP2XCM5Q7f2z,6UT...|32-291-646-8995|oward the special...|
+|  6194.59|Supplier#000066010|        FRANCE|   216005|Manufacturer#4|KgmX7EO2VT925SiAE...|16-254-888-2085|usly across the c...|
+|  6010.47|Supplier#000093407|       ROMANIA|   693406|Manufacturer#4|q3ioGzRWHQV8KpGN9...|29-387-525-3995|olites about the ...|
+|  7374.25|Supplier#000043527|       ROMANIA|  1268490|Manufacturer#3|0CcVQksl564eV1z11...|29-368-322-2740|slyly along the r...|
+|  8103.23|Supplier#000016386|        RUSSIA|  1316385|Manufacturer#5| GK,Fzcm2aDcSiJLP...|32-148-968-6785| furiously specia...|
+|  9041.04|Supplier#000002866|       GERMANY|  1252841|Manufacturer#5|x 4Iy1qgbFyct1N3o...|17-311-244-5890|s wake quickly ir...|
+|  6552.98|Supplier#000040574|        FRANCE|   640573|Manufacturer#5|ekV0zMEgi4n86jneU...|16-314-655-2835|s haggle alongsid...|
+|   195.39|Supplier#000062015|       ROMANIA|   212010|Manufacturer#1|  B7h,0A7tDBxhLR9KZ3|29-950-522-7483| affix furiously....|
+|  1993.45|Supplier#000081349|       ROMANIA|   556343|Manufacturer#5|byaf8k4in6EBB9cCJGTI|29-879-795-9030|ing to the dolphi...|
+|  1631.83|Supplier#000006658|UNITED KINGDOM|  1931600|Manufacturer#1|h25j,DUjfGv9,N1iHhAP|33-754-729-1888|ronic packages. b...|
+|  1827.33|Supplier#000065251|       GERMANY|   965250|Manufacturer#2|FEeFUB7tI0kaOUwpa...|17-454-899-4360| carefully entici...|
+|  1631.83|Supplier#000006658|UNITED KINGDOM|    56657|Manufacturer#3|h25j,DUjfGv9,N1iHhAP|33-754-729-1888|ronic packages. b...|
+|   3817.2|Supplier#000011858|       ROMANIA|  1936800|Manufacturer#1|        tB1nrdWlAW 6|29-398-977-1799|inal packages wak...|
+|  6323.72|Supplier#000069042|       ROMANIA|   969041|Manufacturer#3|Q6KqXFYC8h9YHRKoA...|29-159-409-8105|atterns affix fur...|
+|  6465.51|Supplier#000055265|UNITED KINGDOM|   755264|Manufacturer#5|          GNCHGgdE5j|33-928-630-7491|onic, final packa...|
+|  9041.04|Supplier#000002866|       GERMANY|   577860|Manufacturer#1|x 4Iy1qgbFyct1N3o...|17-311-244-5890|s wake quickly ir...|
++---------+------------------+--------------+---------+--------------+--------------------+---------------+--------------------+
+only showing top 20 rows
+
+Runtime:  0:00:00.194954
+== Physical Plan ==
+*(15) Project [s_acctbal#87, s_name#83, n_name#157, p_partkey#34, p_mfgr#36, s_address#84, s_phone#86, s_comment#88]
++- *(15) BroadcastHashJoin [n_regionkey#158], [r_regionkey#186], Inner, BuildRight, false
+   :- *(15) Project [p_partkey#34, p_mfgr#36, s_name#83, s_address#84, s_phone#86, s_acctbal#87, s_comment#88, n_name#157, n_regionkey#158]
+   :  +- *(15) BroadcastHashJoin [s_nationkey#85], [n_nationkey#156], Inner, BuildRight, false
+   :     :- *(15) Project [p_partkey#34, p_mfgr#36, s_name#83, s_address#84, s_nationkey#85, s_phone#86, s_acctbal#87, s_comment#88]
+   :     :  +- *(15) ShuffledHashJoin [ps_suppkey#123], [s_suppkey#82], Inner, BuildRight
+   :     :     :- Exchange hashpartitioning(ps_suppkey#123, 200), ENSURE_REQUIREMENTS, [id=#710]
+   :     :     :  +- *(11) Project [p_partkey#34, p_mfgr#36, ps_suppkey#123]
+   :     :     :     +- *(11) SortMergeJoin [knownfloatingpointnormalized(normalizenanandzero(ps_supplycost#125)), p_partkey#34], [knownfloatingpointnormalized(normalizenanandzero(min(ps_supplycost)#295)), ps_partkey#122#304], Inner
+   :     :     :        :- *(4) Sort [knownfloatingpointnormalized(normalizenanandzero(ps_supplycost#125)) ASC NULLS FIRST, p_partkey#34 ASC NULLS FIRST], false, 0
+   :     :     :        :  +- Exchange hashpartitioning(knownfloatingpointnormalized(normalizenanandzero(ps_supplycost#125)), p_partkey#34, 200), ENSURE_REQUIREMENTS, [id=#666]
+   :     :     :        :     +- *(3) Project [p_partkey#34, p_mfgr#36, ps_suppkey#123, ps_supplycost#125]
+   :     :     :        :        +- *(3) ShuffledHashJoin [p_partkey#34], [ps_partkey#122], Inner, BuildLeft
+   :     :     :        :           :- Exchange hashpartitioning(p_partkey#34, 200), ENSURE_REQUIREMENTS, [id=#656]
+   :     :     :        :           :  +- *(1) Project [p_partkey#34, p_mfgr#36]
+   :     :     :        :           :     +- *(1) Filter ((((isnotnull(p_size#39) AND isnotnull(p_type#38)) AND (p_size#39 = 15)) AND EndsWith(p_type#38, BRASS)) AND isnotnull(p_partkey#34))
+   :     :     :        :           :        +- FileScan csv [p_partkey#34,p_mfgr#36,p_type#38,p_size#39] Batched: false, DataFilters: [isnotnull(p_size#39), isnotnull(p_type#38), (p_size#39 = 15), EndsWith(p_type#38, BRASS), isnotn..., Format: CSV, Location: InMemoryFileIndex[hdfs://parasilo-11.rennes.grid5000.fr:9000/user/diplomma/data/data10/part.tbl], PartitionFilters: [], PushedFilters: [IsNotNull(p_size), IsNotNull(p_type), EqualTo(p_size,15), StringEndsWith(p_type,BRASS), IsNotNul..., ReadSchema: struct<p_partkey:int,p_mfgr:string,p_type:string,p_size:int>
+   :     :     :        :           +- Exchange hashpartitioning(ps_partkey#122, 200), ENSURE_REQUIREMENTS, [id=#661]
+   :     :     :        :              +- *(2) Filter ((isnotnull(ps_partkey#122) AND isnotnull(ps_supplycost#125)) AND isnotnull(ps_suppkey#123))
+   :     :     :        :                 +- FileScan csv [ps_partkey#122,ps_suppkey#123,ps_supplycost#125] Batched: false, DataFilters: [isnotnull(ps_partkey#122), isnotnull(ps_supplycost#125), isnotnull(ps_suppkey#123)], Format: CSV, Location: InMemoryFileIndex[hdfs://parasilo-11.rennes.grid5000.fr:9000/user/diplomma/data/data10/partsupp.tbl], PartitionFilters: [], PushedFilters: [IsNotNull(ps_partkey), IsNotNull(ps_supplycost), IsNotNull(ps_suppkey)], ReadSchema: struct<ps_partkey:int,ps_suppkey:int,ps_supplycost:double>
+   :     :     :        +- *(10) Sort [knownfloatingpointnormalized(normalizenanandzero(min(ps_supplycost)#295)) ASC NULLS FIRST, ps_partkey#122#304 ASC NULLS FIRST], false, 0
+   :     :     :           +- Exchange hashpartitioning(knownfloatingpointnormalized(normalizenanandzero(min(ps_supplycost)#295)), ps_partkey#122#304, 200), ENSURE_REQUIREMENTS, [id=#702]
+   :     :     :              +- *(9) Filter isnotnull(min(ps_supplycost)#295)
+   :     :     :                 +- *(9) HashAggregate(keys=[ps_partkey#122], functions=[min(ps_supplycost#125)])
+   :     :     :                    +- Exchange hashpartitioning(ps_partkey#122, 200), ENSURE_REQUIREMENTS, [id=#697]
+   :     :     :                       +- *(8) HashAggregate(keys=[ps_partkey#122], functions=[partial_min(ps_supplycost#125)])
+   :     :     :                          +- *(8) Project [ps_partkey#122, ps_supplycost#125]
+   :     :     :                             +- *(8) BroadcastHashJoin [n_regionkey#158], [r_regionkey#186], Inner, BuildRight, false
+   :     :     :                                :- *(8) Project [ps_partkey#122, ps_supplycost#125, n_regionkey#158]
+   :     :     :                                :  +- *(8) BroadcastHashJoin [s_nationkey#85], [n_nationkey#156], Inner, BuildRight, false
+   :     :     :                                :     :- *(8) Project [ps_partkey#122, ps_supplycost#125, s_nationkey#85]
+   :     :     :                                :     :  +- *(8) BroadcastHashJoin [ps_suppkey#123], [s_suppkey#82], Inner, BuildRight, false
+   :     :     :                                :     :     :- *(8) Filter (isnotnull(ps_suppkey#123) AND isnotnull(ps_partkey#122))
+   :     :     :                                :     :     :  +- FileScan csv [ps_partkey#122,ps_suppkey#123,ps_supplycost#125] Batched: false, DataFilters: [isnotnull(ps_suppkey#123), isnotnull(ps_partkey#122)], Format: CSV, Location: InMemoryFileIndex[hdfs://parasilo-11.rennes.grid5000.fr:9000/user/diplomma/data/data10/partsupp.tbl], PartitionFilters: [], PushedFilters: [IsNotNull(ps_suppkey), IsNotNull(ps_partkey)], ReadSchema: struct<ps_partkey:int,ps_suppkey:int,ps_supplycost:double>
+   :     :     :                                :     :     +- BroadcastExchange HashedRelationBroadcastMode(List(cast(input[0, int, false] as bigint)),false), [id=#676]
+   :     :     :                                :     :        +- *(5) Filter (isnotnull(s_suppkey#82) AND isnotnull(s_nationkey#85))
+   :     :     :                                :     :           +- FileScan csv [s_suppkey#82,s_nationkey#85] Batched: false, DataFilters: [isnotnull(s_suppkey#82), isnotnull(s_nationkey#85)], Format: CSV, Location: InMemoryFileIndex[hdfs://parasilo-11.rennes.grid5000.fr:9000/user/diplomma/data/data10/supplier.tbl], PartitionFilters: [], PushedFilters: [IsNotNull(s_suppkey), IsNotNull(s_nationkey)], ReadSchema: struct<s_suppkey:int,s_nationkey:int>
+   :     :     :                                :     +- BroadcastExchange HashedRelationBroadcastMode(List(cast(input[0, int, false] as bigint)),false), [id=#683]
+   :     :     :                                :        +- *(6) Filter (isnotnull(n_nationkey#156) AND isnotnull(n_regionkey#158))
+   :     :     :                                :           +- FileScan csv [n_nationkey#156,n_regionkey#158] Batched: false, DataFilters: [isnotnull(n_nationkey#156), isnotnull(n_regionkey#158)], Format: CSV, Location: InMemoryFileIndex[hdfs://parasilo-11.rennes.grid5000.fr:9000/user/diplomma/data/data10/nation.tbl], PartitionFilters: [], PushedFilters: [IsNotNull(n_nationkey), IsNotNull(n_regionkey)], ReadSchema: struct<n_nationkey:int,n_regionkey:int>
+   :     :     :                                +- BroadcastExchange HashedRelationBroadcastMode(List(cast(input[0, int, true] as bigint)),false), [id=#691]
+   :     :     :                                   +- *(7) Project [r_regionkey#186]
+   :     :     :                                      +- *(7) Filter ((isnotnull(r_name#187) AND (r_name#187 = EUROPE)) AND isnotnull(r_regionkey#186))
+   :     :     :                                         +- FileScan csv [r_regionkey#186,r_name#187] Batched: false, DataFilters: [isnotnull(r_name#187), (r_name#187 = EUROPE), isnotnull(r_regionkey#186)], Format: CSV, Location: InMemoryFileIndex[hdfs://parasilo-11.rennes.grid5000.fr:9000/user/diplomma/data/data10/region.tbl], PartitionFilters: [], PushedFilters: [IsNotNull(r_name), EqualTo(r_name,EUROPE), IsNotNull(r_regionkey)], ReadSchema: struct<r_regionkey:int,r_name:string>
+   :     :     +- Exchange hashpartitioning(s_suppkey#82, 200), ENSURE_REQUIREMENTS, [id=#715]
+   :     :        +- *(12) Filter (isnotnull(s_suppkey#82) AND isnotnull(s_nationkey#85))
+   :     :           +- FileScan csv [s_suppkey#82,s_name#83,s_address#84,s_nationkey#85,s_phone#86,s_acctbal#87,s_comment#88] Batched: false, DataFilters: [isnotnull(s_suppkey#82), isnotnull(s_nationkey#85)], Format: CSV, Location: InMemoryFileIndex[hdfs://parasilo-11.rennes.grid5000.fr:9000/user/diplomma/data/data10/supplier.tbl], PartitionFilters: [], PushedFilters: [IsNotNull(s_suppkey), IsNotNull(s_nationkey)], ReadSchema: struct<s_suppkey:int,s_name:string,s_address:string,s_nationkey:int,s_phone:string,s_acctbal:doub...
+   :     +- BroadcastExchange HashedRelationBroadcastMode(List(cast(input[0, int, false] as bigint)),false), [id=#722]
+   :        +- *(13) Filter (isnotnull(n_nationkey#156) AND isnotnull(n_regionkey#158))
+   :           +- FileScan csv [n_nationkey#156,n_name#157,n_regionkey#158] Batched: false, DataFilters: [isnotnull(n_nationkey#156), isnotnull(n_regionkey#158)], Format: CSV, Location: InMemoryFileIndex[hdfs://parasilo-11.rennes.grid5000.fr:9000/user/diplomma/data/data10/nation.tbl], PartitionFilters: [], PushedFilters: [IsNotNull(n_nationkey), IsNotNull(n_regionkey)], ReadSchema: struct<n_nationkey:int,n_name:string,n_regionkey:int>
+   +- ReusedExchange [r_regionkey#186], BroadcastExchange HashedRelationBroadcastMode(List(cast(input[0, int, true] as bigint)),false), [id=#691]
+
+
+Region partitions:  1
+Nation partitions:  1
+Part partitions:  4
+Partsupp partitions:  9
+Supplier partitions:  4

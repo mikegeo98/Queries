@@ -1,0 +1,37 @@
++----------+-----------+
+|    n_name|     r_name|
++----------+-----------+
+|   ALGERIA|     AFRICA|
+| ARGENTINA|    AMERICA|
+|    BRAZIL|    AMERICA|
+|    CANADA|    AMERICA|
+|     EGYPT|MIDDLE EAST|
+|  ETHIOPIA|     AFRICA|
+|    FRANCE|     EUROPE|
+|   GERMANY|     EUROPE|
+|     INDIA|       ASIA|
+| INDONESIA|       ASIA|
+|      IRAN|MIDDLE EAST|
+|      IRAQ|MIDDLE EAST|
+|     JAPAN|       ASIA|
+|    JORDAN|MIDDLE EAST|
+|     KENYA|     AFRICA|
+|   MOROCCO|     AFRICA|
+|MOZAMBIQUE|     AFRICA|
+|      PERU|    AMERICA|
+|     CHINA|       ASIA|
+|   ROMANIA|     EUROPE|
++----------+-----------+
+only showing top 20 rows
+
+== Physical Plan ==
+*(2) Project [n_name#53, r_name#23]
++- *(2) BroadcastHashJoin [n_regionkey#54], [r_regionkey#22], Inner, BuildRight, false
+   :- *(2) Filter isnotnull(n_regionkey#54)
+   :  +- FileScan csv [n_name#53,n_regionkey#54] Batched: false, DataFilters: [isnotnull(n_regionkey#54)], Format: CSV, Location: InMemoryFileIndex[hdfs://parasilo-11.rennes.grid5000.fr:9000/user/diplomma/data/data100/nation.tbl], PartitionFilters: [], PushedFilters: [IsNotNull(n_regionkey)], ReadSchema: struct<n_name:string,n_regionkey:int>
+   +- BroadcastExchange HashedRelationBroadcastMode(List(cast(input[0, int, false] as bigint)),false), [id=#121]
+      +- *(1) Filter isnotnull(r_regionkey#22)
+         +- FileScan csv [r_regionkey#22,r_name#23] Batched: false, DataFilters: [isnotnull(r_regionkey#22)], Format: CSV, Location: InMemoryFileIndex[hdfs://parasilo-11.rennes.grid5000.fr:9000/user/diplomma/data/data100/region.tbl], PartitionFilters: [], PushedFilters: [IsNotNull(r_regionkey)], ReadSchema: struct<r_regionkey:int,r_name:string>
+
+
+Partitions no nation region 1 1

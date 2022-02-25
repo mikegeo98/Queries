@@ -1,0 +1,567 @@
+2021-10-02 15:15:47,662 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+2021-10-02 15:15:48,227 INFO spark.SparkContext: Running Spark version 3.1.1
+2021-10-02 15:15:48,266 INFO resource.ResourceUtils: ==============================================================
+2021-10-02 15:15:48,266 INFO resource.ResourceUtils: No custom resources configured for spark.driver.
+2021-10-02 15:15:48,266 INFO resource.ResourceUtils: ==============================================================
+2021-10-02 15:15:48,267 INFO spark.SparkContext: Submitted application: join5_DFAPI
+2021-10-02 15:15:48,286 INFO resource.ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 4, script: , vendor: , memory -> name: memory, amount: 1024, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+2021-10-02 15:15:48,300 INFO resource.ResourceProfile: Limiting resource is cpus at 4 tasks per executor
+2021-10-02 15:15:48,302 INFO resource.ResourceProfileManager: Added ResourceProfile id: 0
+2021-10-02 15:15:48,345 INFO spark.SecurityManager: Changing view acls to: root
+2021-10-02 15:15:48,345 INFO spark.SecurityManager: Changing modify acls to: root
+2021-10-02 15:15:48,345 INFO spark.SecurityManager: Changing view acls groups to: 
+2021-10-02 15:15:48,345 INFO spark.SecurityManager: Changing modify acls groups to: 
+2021-10-02 15:15:48,345 INFO spark.SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(root); groups with view permissions: Set(); users  with modify permissions: Set(root); groups with modify permissions: Set()
+2021-10-02 15:15:48,544 INFO util.Utils: Successfully started service 'sparkDriver' on port 37107.
+2021-10-02 15:15:48,567 INFO spark.SparkEnv: Registering MapOutputTracker
+2021-10-02 15:15:48,594 INFO spark.SparkEnv: Registering BlockManagerMaster
+2021-10-02 15:15:48,616 INFO storage.BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+2021-10-02 15:15:48,617 INFO storage.BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+2021-10-02 15:15:48,651 INFO spark.SparkEnv: Registering BlockManagerMasterHeartbeat
+2021-10-02 15:15:48,663 INFO storage.DiskBlockManager: Created local directory at /tmp/blockmgr-a507420e-25e0-4d3a-95b2-d8514329b223
+2021-10-02 15:15:48,685 INFO memory.MemoryStore: MemoryStore started with capacity 408.9 MiB
+2021-10-02 15:15:48,725 INFO spark.SparkEnv: Registering OutputCommitCoordinator
+2021-10-02 15:15:48,805 INFO util.log: Logging initialized @2432ms to org.sparkproject.jetty.util.log.Slf4jLog
+2021-10-02 15:15:48,867 INFO server.Server: jetty-9.4.36.v20210114; built: 2021-01-14T16:44:28.689Z; git: 238ec6997c7806b055319a6d11f8ae7564adc0de; jvm 1.8.0_292-8u292-b10-0ubuntu1~18.04-b10
+2021-10-02 15:15:48,886 INFO server.Server: Started @2514ms
+2021-10-02 15:15:48,916 INFO server.AbstractConnector: Started ServerConnector@14eedc04{HTTP/1.1, (http/1.1)}{0.0.0.0:4040}
+2021-10-02 15:15:48,916 INFO util.Utils: Successfully started service 'SparkUI' on port 4040.
+2021-10-02 15:15:48,937 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@3c75c6bc{/jobs,null,AVAILABLE,@Spark}
+2021-10-02 15:15:48,939 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@52c1e0be{/jobs/json,null,AVAILABLE,@Spark}
+2021-10-02 15:15:48,940 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@7ae8ddd8{/jobs/job,null,AVAILABLE,@Spark}
+2021-10-02 15:15:48,941 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@7fede5e2{/jobs/job/json,null,AVAILABLE,@Spark}
+2021-10-02 15:15:48,941 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@799a0758{/stages,null,AVAILABLE,@Spark}
+2021-10-02 15:15:48,942 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@40544aa6{/stages/json,null,AVAILABLE,@Spark}
+2021-10-02 15:15:48,942 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@15f8ca46{/stages/stage,null,AVAILABLE,@Spark}
+2021-10-02 15:15:48,943 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@76280ef4{/stages/stage/json,null,AVAILABLE,@Spark}
+2021-10-02 15:15:48,944 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@f9afe9f{/stages/pool,null,AVAILABLE,@Spark}
+2021-10-02 15:15:48,945 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@165ad608{/stages/pool/json,null,AVAILABLE,@Spark}
+2021-10-02 15:15:48,946 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@1521523b{/storage,null,AVAILABLE,@Spark}
+2021-10-02 15:15:48,946 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@6c9b9340{/storage/json,null,AVAILABLE,@Spark}
+2021-10-02 15:15:48,947 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@7cf8b5d{/storage/rdd,null,AVAILABLE,@Spark}
+2021-10-02 15:15:48,947 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@14be4404{/storage/rdd/json,null,AVAILABLE,@Spark}
+2021-10-02 15:15:48,948 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@723a7445{/environment,null,AVAILABLE,@Spark}
+2021-10-02 15:15:48,948 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@4e85fad9{/environment/json,null,AVAILABLE,@Spark}
+2021-10-02 15:15:48,949 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@42df6ea6{/executors,null,AVAILABLE,@Spark}
+2021-10-02 15:15:48,950 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@63fd724c{/executors/json,null,AVAILABLE,@Spark}
+2021-10-02 15:15:48,950 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@ce8e219{/executors/threadDump,null,AVAILABLE,@Spark}
+2021-10-02 15:15:48,951 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@7ea5a38f{/executors/threadDump/json,null,AVAILABLE,@Spark}
+2021-10-02 15:15:48,958 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@5802f530{/static,null,AVAILABLE,@Spark}
+2021-10-02 15:15:48,959 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@59a7c327{/,null,AVAILABLE,@Spark}
+2021-10-02 15:15:48,959 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@182c71cb{/api,null,AVAILABLE,@Spark}
+2021-10-02 15:15:48,960 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@184733e3{/jobs/job/kill,null,AVAILABLE,@Spark}
+2021-10-02 15:15:48,961 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@10c7517a{/stages/stage/kill,null,AVAILABLE,@Spark}
+2021-10-02 15:15:48,962 INFO ui.SparkUI: Bound SparkUI to 0.0.0.0, and started at http://parasilo-10.rennes.grid5000.fr:4040
+2021-10-02 15:15:49,236 INFO client.RMProxy: Connecting to ResourceManager at parasilo-10/172.16.97.10:8032
+2021-10-02 15:15:49,391 INFO yarn.Client: Requesting a new application from cluster with 8 NodeManagers
+2021-10-02 15:15:49,869 INFO yarn.Client: Verifying our application has not requested more than the maximum memory capability of the cluster (49152 MB per container)
+2021-10-02 15:15:49,870 INFO yarn.Client: Will allocate AM container, with 896 MB memory including 384 MB overhead
+2021-10-02 15:15:49,870 INFO yarn.Client: Setting up container launch context for our AM
+2021-10-02 15:15:49,870 INFO yarn.Client: Setting up the launch environment for our AM container
+2021-10-02 15:15:49,875 INFO yarn.Client: Preparing resources for our AM container
+2021-10-02 15:15:49,915 WARN yarn.Client: Neither spark.yarn.jars nor spark.yarn.archive is set, falling back to uploading libraries under SPARK_HOME.
+2021-10-02 15:15:52,278 INFO yarn.Client: Uploading resource file:/tmp/spark-425c07dd-350e-4fe0-a8b6-799fe738bec9/__spark_libs__5746367051018412530.zip -> hdfs://parasilo-10.rennes.grid5000.fr:9000/user/root/.sparkStaging/application_1633166781646_0130/__spark_libs__5746367051018412530.zip
+2021-10-02 15:15:53,171 INFO yarn.Client: Uploading resource file:/tmp/spark-425c07dd-350e-4fe0-a8b6-799fe738bec9/__spark_conf__5559427239362115769.zip -> hdfs://parasilo-10.rennes.grid5000.fr:9000/user/root/.sparkStaging/application_1633166781646_0130/__spark_conf__.zip
+2021-10-02 15:15:53,235 INFO spark.SecurityManager: Changing view acls to: root
+2021-10-02 15:15:53,235 INFO spark.SecurityManager: Changing modify acls to: root
+2021-10-02 15:15:53,235 INFO spark.SecurityManager: Changing view acls groups to: 
+2021-10-02 15:15:53,235 INFO spark.SecurityManager: Changing modify acls groups to: 
+2021-10-02 15:15:53,236 INFO spark.SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(root); groups with view permissions: Set(); users  with modify permissions: Set(root); groups with modify permissions: Set()
+2021-10-02 15:15:53,270 INFO yarn.Client: Submitting application application_1633166781646_0130 to ResourceManager
+2021-10-02 15:15:53,292 INFO impl.YarnClientImpl: Submitted application application_1633166781646_0130
+2021-10-02 15:15:54,295 INFO yarn.Client: Application report for application_1633166781646_0130 (state: ACCEPTED)
+2021-10-02 15:15:54,298 INFO yarn.Client: 
+	 client token: N/A
+	 diagnostics: AM container is launched, waiting for AM container to Register with RM
+	 ApplicationMaster host: N/A
+	 ApplicationMaster RPC port: -1
+	 queue: default
+	 start time: 1633180553279
+	 final status: UNDEFINED
+	 tracking URL: http://parasilo-10.rennes.grid5000.fr:8088/proxy/application_1633166781646_0130/
+	 user: root
+2021-10-02 15:15:55,299 INFO yarn.Client: Application report for application_1633166781646_0130 (state: ACCEPTED)
+2021-10-02 15:15:56,301 INFO yarn.Client: Application report for application_1633166781646_0130 (state: ACCEPTED)
+2021-10-02 15:15:56,854 INFO cluster.YarnClientSchedulerBackend: Add WebUI Filter. org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter, Map(PROXY_HOSTS -> parasilo-11.rennes.grid5000.fr, PROXY_URI_BASES -> http://parasilo-11.rennes.grid5000.fr:8088/proxy/application_1633166781646_0130), /proxy/application_1633166781646_0130
+2021-10-02 15:15:57,302 INFO yarn.Client: Application report for application_1633166781646_0130 (state: RUNNING)
+2021-10-02 15:15:57,302 INFO yarn.Client: 
+	 client token: N/A
+	 diagnostics: N/A
+	 ApplicationMaster host: 172.16.97.11
+	 ApplicationMaster RPC port: -1
+	 queue: default
+	 start time: 1633180553279
+	 final status: UNDEFINED
+	 tracking URL: http://parasilo-10.rennes.grid5000.fr:8088/proxy/application_1633166781646_0130/
+	 user: root
+2021-10-02 15:15:57,304 INFO cluster.YarnClientSchedulerBackend: Application application_1633166781646_0130 has started running.
+2021-10-02 15:15:57,314 INFO util.Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 43655.
+2021-10-02 15:15:57,314 INFO netty.NettyBlockTransferService: Server created on parasilo-10.rennes.grid5000.fr:43655
+2021-10-02 15:15:57,316 INFO storage.BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+2021-10-02 15:15:57,326 INFO storage.BlockManagerMaster: Registering BlockManager BlockManagerId(driver, parasilo-10.rennes.grid5000.fr, 43655, None)
+2021-10-02 15:15:57,331 INFO storage.BlockManagerMasterEndpoint: Registering block manager parasilo-10.rennes.grid5000.fr:43655 with 408.9 MiB RAM, BlockManagerId(driver, parasilo-10.rennes.grid5000.fr, 43655, None)
+2021-10-02 15:15:57,333 INFO storage.BlockManagerMaster: Registered BlockManager BlockManagerId(driver, parasilo-10.rennes.grid5000.fr, 43655, None)
+2021-10-02 15:15:57,334 INFO storage.BlockManager: Initialized BlockManager: BlockManagerId(driver, parasilo-10.rennes.grid5000.fr, 43655, None)
+2021-10-02 15:15:57,483 INFO ui.ServerInfo: Adding filter to /metrics/json: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+2021-10-02 15:15:57,485 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@4a9714aa{/metrics/json,null,AVAILABLE,@Spark}
+2021-10-02 15:15:57,654 INFO cluster.YarnSchedulerBackend$YarnSchedulerEndpoint: ApplicationMaster registered as NettyRpcEndpointRef(spark-client://YarnAM)
+2021-10-02 15:16:01,584 INFO cluster.YarnSchedulerBackend$YarnDriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (172.16.97.11:46934) with ID 6,  ResourceProfileId 0
+2021-10-02 15:16:01,699 INFO storage.BlockManagerMasterEndpoint: Registering block manager parasilo-11.rennes.grid5000.fr:35281 with 366.3 MiB RAM, BlockManagerId(6, parasilo-11.rennes.grid5000.fr, 35281, None)
+2021-10-02 15:16:01,968 INFO cluster.YarnSchedulerBackend$YarnDriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (172.16.97.15:35726) with ID 2,  ResourceProfileId 0
+2021-10-02 15:16:01,981 INFO cluster.YarnSchedulerBackend$YarnDriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (172.16.97.9:56324) with ID 1,  ResourceProfileId 0
+2021-10-02 15:16:02,004 INFO cluster.YarnSchedulerBackend$YarnDriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (172.16.97.17:39372) with ID 3,  ResourceProfileId 0
+2021-10-02 15:16:02,063 INFO cluster.YarnSchedulerBackend$YarnDriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (172.16.97.14:33602) with ID 5,  ResourceProfileId 0
+2021-10-02 15:16:02,066 INFO cluster.YarnSchedulerBackend$YarnDriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (172.16.97.28:47014) with ID 4,  ResourceProfileId 0
+2021-10-02 15:16:02,069 INFO storage.BlockManagerMasterEndpoint: Registering block manager parasilo-15.rennes.grid5000.fr:42489 with 366.3 MiB RAM, BlockManagerId(2, parasilo-15.rennes.grid5000.fr, 42489, None)
+2021-10-02 15:16:02,094 INFO storage.BlockManagerMasterEndpoint: Registering block manager parasilo-9.rennes.grid5000.fr:46085 with 366.3 MiB RAM, BlockManagerId(1, parasilo-9.rennes.grid5000.fr, 46085, None)
+2021-10-02 15:16:02,116 INFO storage.BlockManagerMasterEndpoint: Registering block manager parasilo-17.rennes.grid5000.fr:39815 with 366.3 MiB RAM, BlockManagerId(3, parasilo-17.rennes.grid5000.fr, 39815, None)
+2021-10-02 15:16:02,144 INFO cluster.YarnClientSchedulerBackend: SchedulerBackend is ready for scheduling beginning after reached minRegisteredResourcesRatio: 0.8
+2021-10-02 15:16:02,166 INFO storage.BlockManagerMasterEndpoint: Registering block manager parasilo-28.rennes.grid5000.fr:40837 with 366.3 MiB RAM, BlockManagerId(4, parasilo-28.rennes.grid5000.fr, 40837, None)
+2021-10-02 15:16:02,173 INFO storage.BlockManagerMasterEndpoint: Registering block manager parasilo-14.rennes.grid5000.fr:45777 with 366.3 MiB RAM, BlockManagerId(5, parasilo-14.rennes.grid5000.fr, 45777, None)
+2021-10-02 15:16:02,311 INFO internal.SharedState: spark.sql.warehouse.dir is not set, but hive.metastore.warehouse.dir is set. Setting spark.sql.warehouse.dir to the value of hive.metastore.warehouse.dir ('/user/hive/warehouse').
+2021-10-02 15:16:02,311 INFO internal.SharedState: Warehouse path is '/user/hive/warehouse'.
+2021-10-02 15:16:02,323 INFO ui.ServerInfo: Adding filter to /SQL: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+2021-10-02 15:16:02,324 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@75658bbc{/SQL,null,AVAILABLE,@Spark}
+2021-10-02 15:16:02,324 INFO ui.ServerInfo: Adding filter to /SQL/json: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+2021-10-02 15:16:02,325 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@72e9b1a4{/SQL/json,null,AVAILABLE,@Spark}
+2021-10-02 15:16:02,325 INFO ui.ServerInfo: Adding filter to /SQL/execution: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+2021-10-02 15:16:02,326 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@4dca3feb{/SQL/execution,null,AVAILABLE,@Spark}
+2021-10-02 15:16:02,326 INFO ui.ServerInfo: Adding filter to /SQL/execution/json: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+2021-10-02 15:16:02,327 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@1cf4923a{/SQL/execution/json,null,AVAILABLE,@Spark}
+2021-10-02 15:16:02,327 INFO ui.ServerInfo: Adding filter to /static/sql: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+2021-10-02 15:16:02,328 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@65a973ee{/static/sql,null,AVAILABLE,@Spark}
+2021-10-02 15:16:02,915 INFO datasources.InMemoryFileIndex: It took 32 ms to list leaf files for 1 paths.
+2021-10-02 15:16:02,969 INFO datasources.InMemoryFileIndex: It took 3 ms to list leaf files for 1 paths.
+2021-10-02 15:16:04,571 INFO datasources.FileSourceStrategy: Pushed Filters: 
+2021-10-02 15:16:04,574 INFO datasources.FileSourceStrategy: Post-Scan Filters: (length(trim(value#0, None)) > 0)
+2021-10-02 15:16:04,577 INFO datasources.FileSourceStrategy: Output Data Schema: struct<value: string>
+2021-10-02 15:16:05,120 INFO codegen.CodeGenerator: Code generated in 192.762672 ms
+2021-10-02 15:16:05,171 INFO memory.MemoryStore: Block broadcast_0 stored as values in memory (estimated size 737.1 KiB, free 408.2 MiB)
+2021-10-02 15:16:05,215 INFO memory.MemoryStore: Block broadcast_0_piece0 stored as bytes in memory (estimated size 52.5 KiB, free 408.1 MiB)
+2021-10-02 15:16:05,217 INFO storage.BlockManagerInfo: Added broadcast_0_piece0 in memory on parasilo-10.rennes.grid5000.fr:43655 (size: 52.5 KiB, free: 408.8 MiB)
+2021-10-02 15:16:05,220 INFO spark.SparkContext: Created broadcast 0 from csv at NativeMethodAccessorImpl.java:0
+2021-10-02 15:16:05,227 INFO execution.FileSourceScanExec: Planning scan with bin packing, max size: 4194304 bytes, open cost is considered as scanning 4194304 bytes.
+2021-10-02 15:16:05,327 INFO spark.SparkContext: Starting job: csv at NativeMethodAccessorImpl.java:0
+2021-10-02 15:16:05,339 INFO scheduler.DAGScheduler: Got job 0 (csv at NativeMethodAccessorImpl.java:0) with 1 output partitions
+2021-10-02 15:16:05,339 INFO scheduler.DAGScheduler: Final stage: ResultStage 0 (csv at NativeMethodAccessorImpl.java:0)
+2021-10-02 15:16:05,340 INFO scheduler.DAGScheduler: Parents of final stage: List()
+2021-10-02 15:16:05,341 INFO scheduler.DAGScheduler: Missing parents: List()
+2021-10-02 15:16:05,344 INFO scheduler.DAGScheduler: Submitting ResultStage 0 (MapPartitionsRDD[3] at csv at NativeMethodAccessorImpl.java:0), which has no missing parents
+2021-10-02 15:16:05,394 INFO memory.MemoryStore: Block broadcast_1 stored as values in memory (estimated size 10.8 KiB, free 408.1 MiB)
+2021-10-02 15:16:05,396 INFO memory.MemoryStore: Block broadcast_1_piece0 stored as bytes in memory (estimated size 5.4 KiB, free 408.1 MiB)
+2021-10-02 15:16:05,396 INFO storage.BlockManagerInfo: Added broadcast_1_piece0 in memory on parasilo-10.rennes.grid5000.fr:43655 (size: 5.4 KiB, free: 408.8 MiB)
+2021-10-02 15:16:05,397 INFO spark.SparkContext: Created broadcast 1 from broadcast at DAGScheduler.scala:1383
+2021-10-02 15:16:05,408 INFO scheduler.DAGScheduler: Submitting 1 missing tasks from ResultStage 0 (MapPartitionsRDD[3] at csv at NativeMethodAccessorImpl.java:0) (first 15 tasks are for partitions Vector(0))
+2021-10-02 15:16:05,408 INFO cluster.YarnScheduler: Adding task set 0.0 with 1 tasks resource profile 0
+2021-10-02 15:16:05,443 INFO scheduler.TaskSetManager: Starting task 0.0 in stage 0.0 (TID 0) (parasilo-11.rennes.grid5000.fr, executor 6, partition 0, NODE_LOCAL, 4917 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:05,698 INFO storage.BlockManagerInfo: Added broadcast_1_piece0 in memory on parasilo-11.rennes.grid5000.fr:35281 (size: 5.4 KiB, free: 366.3 MiB)
+2021-10-02 15:16:06,504 INFO storage.BlockManagerInfo: Added broadcast_0_piece0 in memory on parasilo-11.rennes.grid5000.fr:35281 (size: 52.5 KiB, free: 366.2 MiB)
+2021-10-02 15:16:07,281 INFO scheduler.TaskSetManager: Finished task 0.0 in stage 0.0 (TID 0) in 1842 ms on parasilo-11.rennes.grid5000.fr (executor 6) (1/1)
+2021-10-02 15:16:07,283 INFO cluster.YarnScheduler: Removed TaskSet 0.0, whose tasks have all completed, from pool 
+2021-10-02 15:16:07,290 INFO scheduler.DAGScheduler: ResultStage 0 (csv at NativeMethodAccessorImpl.java:0) finished in 1.932 s
+2021-10-02 15:16:07,293 INFO scheduler.DAGScheduler: Job 0 is finished. Cancelling potential speculative or zombie tasks for this job
+2021-10-02 15:16:07,294 INFO cluster.YarnScheduler: Killing all running tasks in stage 0: Stage finished
+2021-10-02 15:16:07,296 INFO scheduler.DAGScheduler: Job 0 finished: csv at NativeMethodAccessorImpl.java:0, took 1.968981 s
+2021-10-02 15:16:07,325 INFO codegen.CodeGenerator: Code generated in 15.297898 ms
+2021-10-02 15:16:07,374 INFO datasources.FileSourceStrategy: Pushed Filters: 
+2021-10-02 15:16:07,374 INFO datasources.FileSourceStrategy: Post-Scan Filters: 
+2021-10-02 15:16:07,374 INFO datasources.FileSourceStrategy: Output Data Schema: struct<value: string>
+2021-10-02 15:16:07,382 INFO memory.MemoryStore: Block broadcast_2 stored as values in memory (estimated size 737.1 KiB, free 407.4 MiB)
+2021-10-02 15:16:07,397 INFO memory.MemoryStore: Block broadcast_2_piece0 stored as bytes in memory (estimated size 52.5 KiB, free 407.3 MiB)
+2021-10-02 15:16:07,398 INFO storage.BlockManagerInfo: Added broadcast_2_piece0 in memory on parasilo-10.rennes.grid5000.fr:43655 (size: 52.5 KiB, free: 408.8 MiB)
+2021-10-02 15:16:07,399 INFO spark.SparkContext: Created broadcast 2 from csv at NativeMethodAccessorImpl.java:0
+2021-10-02 15:16:07,399 INFO execution.FileSourceScanExec: Planning scan with bin packing, max size: 4194304 bytes, open cost is considered as scanning 4194304 bytes.
+2021-10-02 15:16:07,446 INFO spark.SparkContext: Starting job: csv at NativeMethodAccessorImpl.java:0
+2021-10-02 15:16:07,447 INFO scheduler.DAGScheduler: Got job 1 (csv at NativeMethodAccessorImpl.java:0) with 1 output partitions
+2021-10-02 15:16:07,447 INFO scheduler.DAGScheduler: Final stage: ResultStage 1 (csv at NativeMethodAccessorImpl.java:0)
+2021-10-02 15:16:07,447 INFO scheduler.DAGScheduler: Parents of final stage: List()
+2021-10-02 15:16:07,448 INFO scheduler.DAGScheduler: Missing parents: List()
+2021-10-02 15:16:07,448 INFO scheduler.DAGScheduler: Submitting ResultStage 1 (MapPartitionsRDD[9] at csv at NativeMethodAccessorImpl.java:0), which has no missing parents
+2021-10-02 15:16:07,467 INFO memory.MemoryStore: Block broadcast_3 stored as values in memory (estimated size 16.2 KiB, free 407.3 MiB)
+2021-10-02 15:16:07,469 INFO memory.MemoryStore: Block broadcast_3_piece0 stored as bytes in memory (estimated size 8.2 KiB, free 407.3 MiB)
+2021-10-02 15:16:07,469 INFO storage.BlockManagerInfo: Added broadcast_3_piece0 in memory on parasilo-10.rennes.grid5000.fr:43655 (size: 8.2 KiB, free: 408.8 MiB)
+2021-10-02 15:16:07,470 INFO spark.SparkContext: Created broadcast 3 from broadcast at DAGScheduler.scala:1383
+2021-10-02 15:16:07,470 INFO scheduler.DAGScheduler: Submitting 1 missing tasks from ResultStage 1 (MapPartitionsRDD[9] at csv at NativeMethodAccessorImpl.java:0) (first 15 tasks are for partitions Vector(0))
+2021-10-02 15:16:07,470 INFO cluster.YarnScheduler: Adding task set 1.0 with 1 tasks resource profile 0
+2021-10-02 15:16:07,472 INFO scheduler.TaskSetManager: Starting task 0.0 in stage 1.0 (TID 1) (parasilo-11.rennes.grid5000.fr, executor 6, partition 0, NODE_LOCAL, 4917 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:07,511 INFO storage.BlockManagerInfo: Added broadcast_3_piece0 in memory on parasilo-11.rennes.grid5000.fr:35281 (size: 8.2 KiB, free: 366.2 MiB)
+2021-10-02 15:16:08,625 INFO storage.BlockManagerInfo: Added broadcast_2_piece0 in memory on parasilo-11.rennes.grid5000.fr:35281 (size: 52.5 KiB, free: 366.2 MiB)
+2021-10-02 15:16:08,714 INFO scheduler.TaskSetManager: Finished task 0.0 in stage 1.0 (TID 1) in 1242 ms on parasilo-11.rennes.grid5000.fr (executor 6) (1/1)
+2021-10-02 15:16:08,714 INFO cluster.YarnScheduler: Removed TaskSet 1.0, whose tasks have all completed, from pool 
+2021-10-02 15:16:08,715 INFO scheduler.DAGScheduler: ResultStage 1 (csv at NativeMethodAccessorImpl.java:0) finished in 1.266 s
+2021-10-02 15:16:08,715 INFO scheduler.DAGScheduler: Job 1 is finished. Cancelling potential speculative or zombie tasks for this job
+2021-10-02 15:16:08,715 INFO cluster.YarnScheduler: Killing all running tasks in stage 1: Stage finished
+2021-10-02 15:16:08,717 INFO scheduler.DAGScheduler: Job 1 finished: csv at NativeMethodAccessorImpl.java:0, took 1.270791 s
+2021-10-02 15:16:08,791 INFO datasources.InMemoryFileIndex: It took 9 ms to list leaf files for 1 paths.
+2021-10-02 15:16:08,816 INFO datasources.InMemoryFileIndex: It took 2 ms to list leaf files for 1 paths.
+2021-10-02 15:16:08,822 INFO datasources.InMemoryFileIndex: It took 1 ms to list leaf files for 1 paths.
+2021-10-02 15:16:08,873 INFO datasources.FileSourceStrategy: Pushed Filters: 
+2021-10-02 15:16:08,873 INFO datasources.FileSourceStrategy: Post-Scan Filters: (length(trim(value#80, None)) > 0)
+2021-10-02 15:16:08,873 INFO datasources.FileSourceStrategy: Output Data Schema: struct<value: string>
+2021-10-02 15:16:08,885 INFO memory.MemoryStore: Block broadcast_4 stored as values in memory (estimated size 737.1 KiB, free 406.6 MiB)
+2021-10-02 15:16:08,899 INFO memory.MemoryStore: Block broadcast_4_piece0 stored as bytes in memory (estimated size 52.5 KiB, free 406.5 MiB)
+2021-10-02 15:16:08,899 INFO storage.BlockManagerInfo: Added broadcast_4_piece0 in memory on parasilo-10.rennes.grid5000.fr:43655 (size: 52.5 KiB, free: 408.7 MiB)
+2021-10-02 15:16:08,900 INFO spark.SparkContext: Created broadcast 4 from csv at NativeMethodAccessorImpl.java:0
+2021-10-02 15:16:08,901 INFO execution.FileSourceScanExec: Planning scan with bin packing, max size: 4194304 bytes, open cost is considered as scanning 4194304 bytes.
+2021-10-02 15:16:08,908 INFO spark.SparkContext: Starting job: csv at NativeMethodAccessorImpl.java:0
+2021-10-02 15:16:08,909 INFO scheduler.DAGScheduler: Got job 2 (csv at NativeMethodAccessorImpl.java:0) with 1 output partitions
+2021-10-02 15:16:08,909 INFO scheduler.DAGScheduler: Final stage: ResultStage 2 (csv at NativeMethodAccessorImpl.java:0)
+2021-10-02 15:16:08,909 INFO scheduler.DAGScheduler: Parents of final stage: List()
+2021-10-02 15:16:08,909 INFO scheduler.DAGScheduler: Missing parents: List()
+2021-10-02 15:16:08,910 INFO scheduler.DAGScheduler: Submitting ResultStage 2 (MapPartitionsRDD[13] at csv at NativeMethodAccessorImpl.java:0), which has no missing parents
+2021-10-02 15:16:08,913 INFO memory.MemoryStore: Block broadcast_5 stored as values in memory (estimated size 10.8 KiB, free 406.5 MiB)
+2021-10-02 15:16:08,914 INFO memory.MemoryStore: Block broadcast_5_piece0 stored as bytes in memory (estimated size 5.4 KiB, free 406.5 MiB)
+2021-10-02 15:16:08,915 INFO storage.BlockManagerInfo: Added broadcast_5_piece0 in memory on parasilo-10.rennes.grid5000.fr:43655 (size: 5.4 KiB, free: 408.7 MiB)
+2021-10-02 15:16:08,915 INFO spark.SparkContext: Created broadcast 5 from broadcast at DAGScheduler.scala:1383
+2021-10-02 15:16:08,916 INFO scheduler.DAGScheduler: Submitting 1 missing tasks from ResultStage 2 (MapPartitionsRDD[13] at csv at NativeMethodAccessorImpl.java:0) (first 15 tasks are for partitions Vector(0))
+2021-10-02 15:16:08,916 INFO cluster.YarnScheduler: Adding task set 2.0 with 1 tasks resource profile 0
+2021-10-02 15:16:08,918 INFO scheduler.TaskSetManager: Starting task 0.0 in stage 2.0 (TID 2) (parasilo-14.rennes.grid5000.fr, executor 5, partition 0, NODE_LOCAL, 4915 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:09,127 INFO storage.BlockManagerInfo: Added broadcast_5_piece0 in memory on parasilo-14.rennes.grid5000.fr:45777 (size: 5.4 KiB, free: 366.3 MiB)
+2021-10-02 15:16:09,982 INFO storage.BlockManagerInfo: Added broadcast_4_piece0 in memory on parasilo-14.rennes.grid5000.fr:45777 (size: 52.5 KiB, free: 366.2 MiB)
+2021-10-02 15:16:10,715 INFO scheduler.TaskSetManager: Finished task 0.0 in stage 2.0 (TID 2) in 1797 ms on parasilo-14.rennes.grid5000.fr (executor 5) (1/1)
+2021-10-02 15:16:10,715 INFO cluster.YarnScheduler: Removed TaskSet 2.0, whose tasks have all completed, from pool 
+2021-10-02 15:16:10,716 INFO scheduler.DAGScheduler: ResultStage 2 (csv at NativeMethodAccessorImpl.java:0) finished in 1.804 s
+2021-10-02 15:16:10,716 INFO scheduler.DAGScheduler: Job 2 is finished. Cancelling potential speculative or zombie tasks for this job
+2021-10-02 15:16:10,716 INFO cluster.YarnScheduler: Killing all running tasks in stage 2: Stage finished
+2021-10-02 15:16:10,716 INFO scheduler.DAGScheduler: Job 2 finished: csv at NativeMethodAccessorImpl.java:0, took 1.808224 s
+2021-10-02 15:16:10,732 INFO datasources.FileSourceStrategy: Pushed Filters: 
+2021-10-02 15:16:10,732 INFO datasources.FileSourceStrategy: Post-Scan Filters: 
+2021-10-02 15:16:10,732 INFO datasources.FileSourceStrategy: Output Data Schema: struct<value: string>
+2021-10-02 15:16:10,738 INFO memory.MemoryStore: Block broadcast_6 stored as values in memory (estimated size 737.1 KiB, free 405.8 MiB)
+2021-10-02 15:16:10,755 INFO memory.MemoryStore: Block broadcast_6_piece0 stored as bytes in memory (estimated size 52.5 KiB, free 405.8 MiB)
+2021-10-02 15:16:10,756 INFO storage.BlockManagerInfo: Added broadcast_6_piece0 in memory on parasilo-10.rennes.grid5000.fr:43655 (size: 52.5 KiB, free: 408.7 MiB)
+2021-10-02 15:16:10,757 INFO spark.SparkContext: Created broadcast 6 from csv at NativeMethodAccessorImpl.java:0
+2021-10-02 15:16:10,758 INFO execution.FileSourceScanExec: Planning scan with bin packing, max size: 4194304 bytes, open cost is considered as scanning 4194304 bytes.
+2021-10-02 15:16:10,771 INFO spark.SparkContext: Starting job: csv at NativeMethodAccessorImpl.java:0
+2021-10-02 15:16:10,772 INFO scheduler.DAGScheduler: Got job 3 (csv at NativeMethodAccessorImpl.java:0) with 1 output partitions
+2021-10-02 15:16:10,772 INFO scheduler.DAGScheduler: Final stage: ResultStage 3 (csv at NativeMethodAccessorImpl.java:0)
+2021-10-02 15:16:10,772 INFO scheduler.DAGScheduler: Parents of final stage: List()
+2021-10-02 15:16:10,772 INFO scheduler.DAGScheduler: Missing parents: List()
+2021-10-02 15:16:10,773 INFO scheduler.DAGScheduler: Submitting ResultStage 3 (MapPartitionsRDD[19] at csv at NativeMethodAccessorImpl.java:0), which has no missing parents
+2021-10-02 15:16:10,778 INFO memory.MemoryStore: Block broadcast_7 stored as values in memory (estimated size 16.1 KiB, free 405.7 MiB)
+2021-10-02 15:16:10,780 INFO memory.MemoryStore: Block broadcast_7_piece0 stored as bytes in memory (estimated size 8.1 KiB, free 405.7 MiB)
+2021-10-02 15:16:10,780 INFO storage.BlockManagerInfo: Added broadcast_7_piece0 in memory on parasilo-10.rennes.grid5000.fr:43655 (size: 8.1 KiB, free: 408.7 MiB)
+2021-10-02 15:16:10,781 INFO spark.SparkContext: Created broadcast 7 from broadcast at DAGScheduler.scala:1383
+2021-10-02 15:16:10,781 INFO scheduler.DAGScheduler: Submitting 1 missing tasks from ResultStage 3 (MapPartitionsRDD[19] at csv at NativeMethodAccessorImpl.java:0) (first 15 tasks are for partitions Vector(0))
+2021-10-02 15:16:10,781 INFO cluster.YarnScheduler: Adding task set 3.0 with 1 tasks resource profile 0
+2021-10-02 15:16:10,783 INFO scheduler.TaskSetManager: Starting task 0.0 in stage 3.0 (TID 3) (parasilo-9.rennes.grid5000.fr, executor 1, partition 0, NODE_LOCAL, 4915 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:10,990 INFO storage.BlockManagerInfo: Added broadcast_7_piece0 in memory on parasilo-9.rennes.grid5000.fr:46085 (size: 8.1 KiB, free: 366.3 MiB)
+2021-10-02 15:16:12,947 INFO storage.BlockManagerInfo: Added broadcast_6_piece0 in memory on parasilo-9.rennes.grid5000.fr:46085 (size: 52.5 KiB, free: 366.2 MiB)
+2021-10-02 15:16:13,622 INFO scheduler.TaskSetManager: Finished task 0.0 in stage 3.0 (TID 3) in 2838 ms on parasilo-9.rennes.grid5000.fr (executor 1) (1/1)
+2021-10-02 15:16:13,622 INFO cluster.YarnScheduler: Removed TaskSet 3.0, whose tasks have all completed, from pool 
+2021-10-02 15:16:13,623 INFO scheduler.DAGScheduler: ResultStage 3 (csv at NativeMethodAccessorImpl.java:0) finished in 2.848 s
+2021-10-02 15:16:13,623 INFO scheduler.DAGScheduler: Job 3 is finished. Cancelling potential speculative or zombie tasks for this job
+2021-10-02 15:16:13,623 INFO cluster.YarnScheduler: Killing all running tasks in stage 3: Stage finished
+2021-10-02 15:16:13,623 INFO scheduler.DAGScheduler: Job 3 finished: csv at NativeMethodAccessorImpl.java:0, took 2.852482 s
+2021-10-02 15:16:13,650 INFO datasources.InMemoryFileIndex: It took 2 ms to list leaf files for 1 paths.
+2021-10-02 15:16:13,771 INFO storage.BlockManagerInfo: Removed broadcast_6_piece0 on parasilo-10.rennes.grid5000.fr:43655 in memory (size: 52.5 KiB, free: 408.7 MiB)
+2021-10-02 15:16:13,777 INFO storage.BlockManagerInfo: Removed broadcast_6_piece0 on parasilo-9.rennes.grid5000.fr:46085 in memory (size: 52.5 KiB, free: 366.3 MiB)
+2021-10-02 15:16:13,789 INFO storage.BlockManagerInfo: Removed broadcast_7_piece0 on parasilo-9.rennes.grid5000.fr:46085 in memory (size: 8.1 KiB, free: 366.3 MiB)
+2021-10-02 15:16:13,790 INFO storage.BlockManagerInfo: Removed broadcast_7_piece0 on parasilo-10.rennes.grid5000.fr:43655 in memory (size: 8.1 KiB, free: 408.7 MiB)
+2021-10-02 15:16:13,798 INFO storage.BlockManagerInfo: Removed broadcast_4_piece0 on parasilo-10.rennes.grid5000.fr:43655 in memory (size: 52.5 KiB, free: 408.8 MiB)
+2021-10-02 15:16:13,803 INFO storage.BlockManagerInfo: Removed broadcast_4_piece0 on parasilo-14.rennes.grid5000.fr:45777 in memory (size: 52.5 KiB, free: 366.3 MiB)
+2021-10-02 15:16:13,808 INFO storage.BlockManagerInfo: Removed broadcast_5_piece0 on parasilo-10.rennes.grid5000.fr:43655 in memory (size: 5.4 KiB, free: 408.8 MiB)
+2021-10-02 15:16:13,810 INFO storage.BlockManagerInfo: Removed broadcast_5_piece0 on parasilo-14.rennes.grid5000.fr:45777 in memory (size: 5.4 KiB, free: 366.3 MiB)
+2021-10-02 15:16:13,817 INFO storage.BlockManagerInfo: Removed broadcast_3_piece0 on parasilo-10.rennes.grid5000.fr:43655 in memory (size: 8.2 KiB, free: 408.8 MiB)
+2021-10-02 15:16:13,819 INFO storage.BlockManagerInfo: Removed broadcast_3_piece0 on parasilo-11.rennes.grid5000.fr:35281 in memory (size: 8.2 KiB, free: 366.2 MiB)
+2021-10-02 15:16:13,827 INFO storage.BlockManagerInfo: Removed broadcast_1_piece0 on parasilo-10.rennes.grid5000.fr:43655 in memory (size: 5.4 KiB, free: 408.8 MiB)
+2021-10-02 15:16:13,828 INFO storage.BlockManagerInfo: Removed broadcast_1_piece0 on parasilo-11.rennes.grid5000.fr:35281 in memory (size: 5.4 KiB, free: 366.2 MiB)
+2021-10-02 15:16:14,045 INFO datasources.FileSourceStrategy: Pushed Filters: IsNotNull(o_orderdate),IsNotNull(o_orderkey)
+2021-10-02 15:16:14,045 INFO datasources.FileSourceStrategy: Post-Scan Filters: isnotnull(o_orderdate#118),(cast(o_orderdate#118 as date) < 9204),isnotnull(o_orderkey#114)
+2021-10-02 15:16:14,045 INFO datasources.FileSourceStrategy: Output Data Schema: struct<o_orderkey: int, o_orderdate: string, o_shippriority: int ... 1 more fields>
+2021-10-02 15:16:14,046 INFO datasources.FileSourceStrategy: Pushed Filters: IsNotNull(l_shipdate),IsNotNull(l_orderkey)
+2021-10-02 15:16:14,047 INFO datasources.FileSourceStrategy: Post-Scan Filters: isnotnull(l_shipdate#58),(cast(l_shipdate#58 as date) > 9204),isnotnull(l_orderkey#48)
+2021-10-02 15:16:14,047 INFO datasources.FileSourceStrategy: Output Data Schema: struct<l_orderkey: int, l_shipdate: string>
+2021-10-02 15:16:14,134 INFO codegen.CodeGenerator: Code generated in 25.831319 ms
+2021-10-02 15:16:14,150 INFO codegen.CodeGenerator: Code generated in 11.30653 ms
+2021-10-02 15:16:14,168 INFO codegen.CodeGenerator: Code generated in 13.209153 ms
+2021-10-02 15:16:14,173 INFO memory.MemoryStore: Block broadcast_8 stored as values in memory (estimated size 737.1 KiB, free 406.6 MiB)
+2021-10-02 15:16:14,185 INFO memory.MemoryStore: Block broadcast_8_piece0 stored as bytes in memory (estimated size 52.6 KiB, free 406.6 MiB)
+2021-10-02 15:16:14,186 INFO storage.BlockManagerInfo: Added broadcast_8_piece0 in memory on parasilo-10.rennes.grid5000.fr:43655 (size: 52.6 KiB, free: 408.7 MiB)
+2021-10-02 15:16:14,187 INFO spark.SparkContext: Created broadcast 8 from showString at NativeMethodAccessorImpl.java:0
+2021-10-02 15:16:14,189 INFO execution.FileSourceScanExec: Planning scan with bin packing, max size: 73057888 bytes, open cost is considered as scanning 4194304 bytes.
+2021-10-02 15:16:14,232 INFO codegen.CodeGenerator: Code generated in 10.352093 ms
+2021-10-02 15:16:14,246 INFO codegen.CodeGenerator: Code generated in 9.507093 ms
+2021-10-02 15:16:14,248 INFO memory.MemoryStore: Block broadcast_9 stored as values in memory (estimated size 737.1 KiB, free 405.9 MiB)
+2021-10-02 15:16:14,261 INFO memory.MemoryStore: Block broadcast_9_piece0 stored as bytes in memory (estimated size 52.6 KiB, free 405.8 MiB)
+2021-10-02 15:16:14,261 INFO storage.BlockManagerInfo: Added broadcast_9_piece0 in memory on parasilo-10.rennes.grid5000.fr:43655 (size: 52.6 KiB, free: 408.7 MiB)
+2021-10-02 15:16:14,262 INFO spark.SparkContext: Created broadcast 9 from showString at NativeMethodAccessorImpl.java:0
+2021-10-02 15:16:14,262 INFO execution.FileSourceScanExec: Planning scan with bin packing, max size: 134217728 bytes, open cost is considered as scanning 4194304 bytes.
+2021-10-02 15:16:14,293 INFO spark.SparkContext: Starting job: showString at NativeMethodAccessorImpl.java:0
+2021-10-02 15:16:14,296 INFO scheduler.DAGScheduler: Registering RDD 29 (showString at NativeMethodAccessorImpl.java:0) as input to shuffle 1
+2021-10-02 15:16:14,298 INFO scheduler.DAGScheduler: Registering RDD 23 (showString at NativeMethodAccessorImpl.java:0) as input to shuffle 0
+2021-10-02 15:16:14,298 INFO scheduler.DAGScheduler: Got job 4 (showString at NativeMethodAccessorImpl.java:0) with 1 output partitions
+2021-10-02 15:16:14,298 INFO scheduler.DAGScheduler: Final stage: ResultStage 6 (showString at NativeMethodAccessorImpl.java:0)
+2021-10-02 15:16:14,298 INFO scheduler.DAGScheduler: Parents of final stage: List(ShuffleMapStage 5, ShuffleMapStage 4)
+2021-10-02 15:16:14,299 INFO scheduler.DAGScheduler: Missing parents: List(ShuffleMapStage 5, ShuffleMapStage 4)
+2021-10-02 15:16:14,301 INFO scheduler.DAGScheduler: Submitting ShuffleMapStage 4 (MapPartitionsRDD[29] at showString at NativeMethodAccessorImpl.java:0), which has no missing parents
+2021-10-02 15:16:14,313 INFO memory.MemoryStore: Block broadcast_10 stored as values in memory (estimated size 16.6 KiB, free 405.8 MiB)
+2021-10-02 15:16:14,314 INFO memory.MemoryStore: Block broadcast_10_piece0 stored as bytes in memory (estimated size 8.4 KiB, free 405.8 MiB)
+2021-10-02 15:16:14,315 INFO storage.BlockManagerInfo: Added broadcast_10_piece0 in memory on parasilo-10.rennes.grid5000.fr:43655 (size: 8.4 KiB, free: 408.7 MiB)
+2021-10-02 15:16:14,315 INFO spark.SparkContext: Created broadcast 10 from broadcast at DAGScheduler.scala:1383
+2021-10-02 15:16:14,317 INFO scheduler.DAGScheduler: Submitting 58 missing tasks from ShuffleMapStage 4 (MapPartitionsRDD[29] at showString at NativeMethodAccessorImpl.java:0) (first 15 tasks are for partitions Vector(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14))
+2021-10-02 15:16:14,317 INFO cluster.YarnScheduler: Adding task set 4.0 with 58 tasks resource profile 0
+2021-10-02 15:16:14,318 INFO scheduler.DAGScheduler: Submitting ShuffleMapStage 5 (MapPartitionsRDD[23] at showString at NativeMethodAccessorImpl.java:0), which has no missing parents
+2021-10-02 15:16:14,319 INFO scheduler.TaskSetManager: Starting task 5.0 in stage 4.0 (TID 4) (parasilo-11.rennes.grid5000.fr, executor 6, partition 5, NODE_LOCAL, 4906 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:14,320 INFO scheduler.TaskSetManager: Starting task 0.0 in stage 4.0 (TID 5) (parasilo-15.rennes.grid5000.fr, executor 2, partition 0, NODE_LOCAL, 4906 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:14,320 INFO scheduler.TaskSetManager: Starting task 6.0 in stage 4.0 (TID 6) (parasilo-28.rennes.grid5000.fr, executor 4, partition 6, NODE_LOCAL, 4906 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:14,320 INFO scheduler.TaskSetManager: Starting task 4.0 in stage 4.0 (TID 7) (parasilo-14.rennes.grid5000.fr, executor 5, partition 4, NODE_LOCAL, 4906 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:14,321 INFO scheduler.TaskSetManager: Starting task 1.0 in stage 4.0 (TID 8) (parasilo-17.rennes.grid5000.fr, executor 3, partition 1, NODE_LOCAL, 4906 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:14,321 INFO scheduler.TaskSetManager: Starting task 2.0 in stage 4.0 (TID 9) (parasilo-9.rennes.grid5000.fr, executor 1, partition 2, NODE_LOCAL, 4906 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:14,321 INFO scheduler.TaskSetManager: Starting task 8.0 in stage 4.0 (TID 10) (parasilo-11.rennes.grid5000.fr, executor 6, partition 8, NODE_LOCAL, 4906 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:14,321 INFO scheduler.TaskSetManager: Starting task 3.0 in stage 4.0 (TID 11) (parasilo-15.rennes.grid5000.fr, executor 2, partition 3, NODE_LOCAL, 4906 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:14,322 INFO scheduler.TaskSetManager: Starting task 10.0 in stage 4.0 (TID 12) (parasilo-28.rennes.grid5000.fr, executor 4, partition 10, NODE_LOCAL, 4906 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:14,322 INFO scheduler.TaskSetManager: Starting task 7.0 in stage 4.0 (TID 13) (parasilo-14.rennes.grid5000.fr, executor 5, partition 7, NODE_LOCAL, 4906 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:14,322 INFO scheduler.TaskSetManager: Starting task 12.0 in stage 4.0 (TID 14) (parasilo-17.rennes.grid5000.fr, executor 3, partition 12, NODE_LOCAL, 4906 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:14,322 INFO scheduler.TaskSetManager: Starting task 9.0 in stage 4.0 (TID 15) (parasilo-9.rennes.grid5000.fr, executor 1, partition 9, NODE_LOCAL, 4906 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:14,322 INFO memory.MemoryStore: Block broadcast_11 stored as values in memory (estimated size 16.6 KiB, free 405.8 MiB)
+2021-10-02 15:16:14,322 INFO scheduler.TaskSetManager: Starting task 20.0 in stage 4.0 (TID 16) (parasilo-11.rennes.grid5000.fr, executor 6, partition 20, NODE_LOCAL, 4906 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:14,323 INFO scheduler.TaskSetManager: Starting task 11.0 in stage 4.0 (TID 17) (parasilo-15.rennes.grid5000.fr, executor 2, partition 11, NODE_LOCAL, 4906 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:14,323 INFO scheduler.TaskSetManager: Starting task 13.0 in stage 4.0 (TID 18) (parasilo-28.rennes.grid5000.fr, executor 4, partition 13, NODE_LOCAL, 4906 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:14,323 INFO scheduler.TaskSetManager: Starting task 15.0 in stage 4.0 (TID 19) (parasilo-14.rennes.grid5000.fr, executor 5, partition 15, NODE_LOCAL, 4906 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:14,323 INFO scheduler.TaskSetManager: Starting task 16.0 in stage 4.0 (TID 20) (parasilo-17.rennes.grid5000.fr, executor 3, partition 16, NODE_LOCAL, 4906 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:14,323 INFO memory.MemoryStore: Block broadcast_11_piece0 stored as bytes in memory (estimated size 8.4 KiB, free 405.8 MiB)
+2021-10-02 15:16:14,324 INFO scheduler.TaskSetManager: Starting task 14.0 in stage 4.0 (TID 21) (parasilo-9.rennes.grid5000.fr, executor 1, partition 14, NODE_LOCAL, 4906 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:14,324 INFO scheduler.TaskSetManager: Starting task 21.0 in stage 4.0 (TID 22) (parasilo-11.rennes.grid5000.fr, executor 6, partition 21, NODE_LOCAL, 4906 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:14,324 INFO storage.BlockManagerInfo: Added broadcast_11_piece0 in memory on parasilo-10.rennes.grid5000.fr:43655 (size: 8.4 KiB, free: 408.7 MiB)
+2021-10-02 15:16:14,324 INFO scheduler.TaskSetManager: Starting task 26.0 in stage 4.0 (TID 23) (parasilo-15.rennes.grid5000.fr, executor 2, partition 26, NODE_LOCAL, 4906 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:14,324 INFO spark.SparkContext: Created broadcast 11 from broadcast at DAGScheduler.scala:1383
+2021-10-02 15:16:14,324 INFO scheduler.TaskSetManager: Starting task 22.0 in stage 4.0 (TID 24) (parasilo-28.rennes.grid5000.fr, executor 4, partition 22, NODE_LOCAL, 4906 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:14,325 INFO scheduler.TaskSetManager: Starting task 17.0 in stage 4.0 (TID 25) (parasilo-14.rennes.grid5000.fr, executor 5, partition 17, NODE_LOCAL, 4906 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:14,325 INFO scheduler.TaskSetManager: Starting task 19.0 in stage 4.0 (TID 26) (parasilo-17.rennes.grid5000.fr, executor 3, partition 19, NODE_LOCAL, 4906 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:14,325 INFO scheduler.DAGScheduler: Submitting 24 missing tasks from ShuffleMapStage 5 (MapPartitionsRDD[23] at showString at NativeMethodAccessorImpl.java:0) (first 15 tasks are for partitions Vector(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14))
+2021-10-02 15:16:14,325 INFO scheduler.TaskSetManager: Starting task 18.0 in stage 4.0 (TID 27) (parasilo-9.rennes.grid5000.fr, executor 1, partition 18, NODE_LOCAL, 4906 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:14,325 INFO cluster.YarnScheduler: Adding task set 5.0 with 24 tasks resource profile 0
+2021-10-02 15:16:14,364 INFO storage.BlockManagerInfo: Added broadcast_10_piece0 in memory on parasilo-11.rennes.grid5000.fr:35281 (size: 8.4 KiB, free: 366.2 MiB)
+2021-10-02 15:16:14,398 INFO storage.BlockManagerInfo: Added broadcast_10_piece0 in memory on parasilo-9.rennes.grid5000.fr:46085 (size: 8.4 KiB, free: 366.3 MiB)
+2021-10-02 15:16:14,398 INFO storage.BlockManagerInfo: Added broadcast_10_piece0 in memory on parasilo-14.rennes.grid5000.fr:45777 (size: 8.4 KiB, free: 366.3 MiB)
+2021-10-02 15:16:14,526 INFO storage.BlockManagerInfo: Added broadcast_9_piece0 in memory on parasilo-11.rennes.grid5000.fr:35281 (size: 52.6 KiB, free: 366.1 MiB)
+2021-10-02 15:16:14,554 INFO storage.BlockManagerInfo: Added broadcast_10_piece0 in memory on parasilo-28.rennes.grid5000.fr:40837 (size: 8.4 KiB, free: 366.3 MiB)
+2021-10-02 15:16:14,562 INFO storage.BlockManagerInfo: Added broadcast_10_piece0 in memory on parasilo-15.rennes.grid5000.fr:42489 (size: 8.4 KiB, free: 366.3 MiB)
+2021-10-02 15:16:14,571 INFO storage.BlockManagerInfo: Added broadcast_9_piece0 in memory on parasilo-9.rennes.grid5000.fr:46085 (size: 52.6 KiB, free: 366.2 MiB)
+2021-10-02 15:16:14,579 INFO storage.BlockManagerInfo: Added broadcast_10_piece0 in memory on parasilo-17.rennes.grid5000.fr:39815 (size: 8.4 KiB, free: 366.3 MiB)
+2021-10-02 15:16:14,615 INFO storage.BlockManagerInfo: Added broadcast_9_piece0 in memory on parasilo-14.rennes.grid5000.fr:45777 (size: 52.6 KiB, free: 366.2 MiB)
+2021-10-02 15:16:15,627 INFO storage.BlockManagerInfo: Added broadcast_9_piece0 in memory on parasilo-28.rennes.grid5000.fr:40837 (size: 52.6 KiB, free: 366.2 MiB)
+2021-10-02 15:16:15,627 INFO storage.BlockManagerInfo: Added broadcast_9_piece0 in memory on parasilo-15.rennes.grid5000.fr:42489 (size: 52.6 KiB, free: 366.2 MiB)
+2021-10-02 15:16:15,652 INFO storage.BlockManagerInfo: Added broadcast_9_piece0 in memory on parasilo-17.rennes.grid5000.fr:39815 (size: 52.6 KiB, free: 366.2 MiB)
+2021-10-02 15:16:16,794 INFO scheduler.TaskSetManager: Starting task 23.0 in stage 4.0 (TID 28) (parasilo-9.rennes.grid5000.fr, executor 1, partition 23, NODE_LOCAL, 4906 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:16,798 INFO scheduler.TaskSetManager: Finished task 9.0 in stage 4.0 (TID 15) in 2476 ms on parasilo-9.rennes.grid5000.fr (executor 1) (1/58)
+2021-10-02 15:16:16,804 INFO scheduler.TaskSetManager: Starting task 24.0 in stage 4.0 (TID 29) (parasilo-11.rennes.grid5000.fr, executor 6, partition 24, NODE_LOCAL, 4906 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:16,804 INFO scheduler.TaskSetManager: Finished task 8.0 in stage 4.0 (TID 10) in 2483 ms on parasilo-11.rennes.grid5000.fr (executor 6) (2/58)
+2021-10-02 15:16:16,924 INFO scheduler.TaskSetManager: Starting task 25.0 in stage 4.0 (TID 30) (parasilo-11.rennes.grid5000.fr, executor 6, partition 25, NODE_LOCAL, 4906 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:16,925 INFO scheduler.TaskSetManager: Finished task 5.0 in stage 4.0 (TID 4) in 2606 ms on parasilo-11.rennes.grid5000.fr (executor 6) (3/58)
+2021-10-02 15:16:16,962 INFO scheduler.TaskSetManager: Starting task 27.0 in stage 4.0 (TID 31) (parasilo-9.rennes.grid5000.fr, executor 1, partition 27, NODE_LOCAL, 4906 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:16,963 INFO scheduler.TaskSetManager: Finished task 14.0 in stage 4.0 (TID 21) in 2640 ms on parasilo-9.rennes.grid5000.fr (executor 1) (4/58)
+2021-10-02 15:16:16,964 INFO scheduler.TaskSetManager: Starting task 28.0 in stage 4.0 (TID 32) (parasilo-9.rennes.grid5000.fr, executor 1, partition 28, NODE_LOCAL, 4906 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:16,964 INFO scheduler.TaskSetManager: Finished task 2.0 in stage 4.0 (TID 9) in 2643 ms on parasilo-9.rennes.grid5000.fr (executor 1) (5/58)
+2021-10-02 15:16:17,030 INFO scheduler.TaskSetManager: Starting task 30.0 in stage 4.0 (TID 33) (parasilo-11.rennes.grid5000.fr, executor 6, partition 30, NODE_LOCAL, 4906 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:17,031 INFO scheduler.TaskSetManager: Finished task 20.0 in stage 4.0 (TID 16) in 2709 ms on parasilo-11.rennes.grid5000.fr (executor 6) (6/58)
+2021-10-02 15:16:17,076 INFO scheduler.TaskSetManager: Starting task 32.0 in stage 4.0 (TID 34) (parasilo-11.rennes.grid5000.fr, executor 6, partition 32, NODE_LOCAL, 4906 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:17,076 INFO scheduler.TaskSetManager: Finished task 21.0 in stage 4.0 (TID 22) in 2752 ms on parasilo-11.rennes.grid5000.fr (executor 6) (7/58)
+2021-10-02 15:16:17,077 INFO scheduler.TaskSetManager: Starting task 29.0 in stage 4.0 (TID 35) (parasilo-9.rennes.grid5000.fr, executor 1, partition 29, NODE_LOCAL, 4906 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:17,078 INFO scheduler.TaskSetManager: Finished task 18.0 in stage 4.0 (TID 27) in 2752 ms on parasilo-9.rennes.grid5000.fr (executor 1) (8/58)
+2021-10-02 15:16:17,176 INFO scheduler.TaskSetManager: Starting task 34.0 in stage 4.0 (TID 36) (parasilo-14.rennes.grid5000.fr, executor 5, partition 34, NODE_LOCAL, 4906 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:17,176 INFO scheduler.TaskSetManager: Finished task 17.0 in stage 4.0 (TID 25) in 2851 ms on parasilo-14.rennes.grid5000.fr (executor 5) (9/58)
+2021-10-02 15:16:17,455 INFO scheduler.TaskSetManager: Starting task 35.0 in stage 4.0 (TID 37) (parasilo-14.rennes.grid5000.fr, executor 5, partition 35, NODE_LOCAL, 4906 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:17,456 INFO scheduler.TaskSetManager: Finished task 15.0 in stage 4.0 (TID 19) in 3133 ms on parasilo-14.rennes.grid5000.fr (executor 5) (10/58)
+2021-10-02 15:16:17,458 INFO scheduler.TaskSetManager: Starting task 36.0 in stage 4.0 (TID 38) (parasilo-14.rennes.grid5000.fr, executor 5, partition 36, NODE_LOCAL, 4906 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:17,459 INFO scheduler.TaskSetManager: Finished task 7.0 in stage 4.0 (TID 13) in 3137 ms on parasilo-14.rennes.grid5000.fr (executor 5) (11/58)
+2021-10-02 15:16:18,071 INFO scheduler.TaskSetManager: Starting task 37.0 in stage 4.0 (TID 39) (parasilo-14.rennes.grid5000.fr, executor 5, partition 37, NODE_LOCAL, 4906 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:18,071 INFO scheduler.TaskSetManager: Finished task 4.0 in stage 4.0 (TID 7) in 3751 ms on parasilo-14.rennes.grid5000.fr (executor 5) (12/58)
+2021-10-02 15:16:18,626 INFO scheduler.TaskSetManager: Starting task 43.0 in stage 4.0 (TID 40) (parasilo-17.rennes.grid5000.fr, executor 3, partition 43, NODE_LOCAL, 4906 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:18,626 INFO scheduler.TaskSetManager: Finished task 1.0 in stage 4.0 (TID 8) in 4305 ms on parasilo-17.rennes.grid5000.fr (executor 3) (13/58)
+2021-10-02 15:16:18,661 INFO scheduler.TaskSetManager: Starting task 44.0 in stage 4.0 (TID 41) (parasilo-17.rennes.grid5000.fr, executor 3, partition 44, NODE_LOCAL, 4906 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:18,661 INFO scheduler.TaskSetManager: Finished task 16.0 in stage 4.0 (TID 20) in 4338 ms on parasilo-17.rennes.grid5000.fr (executor 3) (14/58)
+2021-10-02 15:16:18,698 INFO scheduler.TaskSetManager: Starting task 51.0 in stage 4.0 (TID 42) (parasilo-17.rennes.grid5000.fr, executor 3, partition 51, NODE_LOCAL, 4906 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:18,699 INFO scheduler.TaskSetManager: Finished task 12.0 in stage 4.0 (TID 14) in 4377 ms on parasilo-17.rennes.grid5000.fr (executor 3) (15/58)
+2021-10-02 15:16:18,704 INFO scheduler.TaskSetManager: Starting task 31.0 in stage 4.0 (TID 43) (parasilo-28.rennes.grid5000.fr, executor 4, partition 31, NODE_LOCAL, 4906 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:18,705 INFO scheduler.TaskSetManager: Starting task 41.0 in stage 4.0 (TID 44) (parasilo-28.rennes.grid5000.fr, executor 4, partition 41, NODE_LOCAL, 4906 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:18,706 INFO scheduler.TaskSetManager: Finished task 6.0 in stage 4.0 (TID 6) in 4386 ms on parasilo-28.rennes.grid5000.fr (executor 4) (16/58)
+2021-10-02 15:16:18,706 INFO scheduler.TaskSetManager: Finished task 10.0 in stage 4.0 (TID 12) in 4385 ms on parasilo-28.rennes.grid5000.fr (executor 4) (17/58)
+2021-10-02 15:16:18,706 INFO scheduler.TaskSetManager: Starting task 47.0 in stage 4.0 (TID 45) (parasilo-28.rennes.grid5000.fr, executor 4, partition 47, NODE_LOCAL, 4906 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:18,707 INFO scheduler.TaskSetManager: Finished task 22.0 in stage 4.0 (TID 24) in 4383 ms on parasilo-28.rennes.grid5000.fr (executor 4) (18/58)
+2021-10-02 15:16:18,719 INFO scheduler.TaskSetManager: Starting task 48.0 in stage 4.0 (TID 46) (parasilo-28.rennes.grid5000.fr, executor 4, partition 48, NODE_LOCAL, 4906 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:18,720 INFO scheduler.TaskSetManager: Finished task 13.0 in stage 4.0 (TID 18) in 4397 ms on parasilo-28.rennes.grid5000.fr (executor 4) (19/58)
+2021-10-02 15:16:18,724 INFO scheduler.TaskSetManager: Starting task 52.0 in stage 4.0 (TID 47) (parasilo-17.rennes.grid5000.fr, executor 3, partition 52, NODE_LOCAL, 4906 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:18,724 INFO scheduler.TaskSetManager: Finished task 19.0 in stage 4.0 (TID 26) in 4399 ms on parasilo-17.rennes.grid5000.fr (executor 3) (20/58)
+2021-10-02 15:16:18,795 INFO scheduler.TaskSetManager: Starting task 39.0 in stage 4.0 (TID 48) (parasilo-9.rennes.grid5000.fr, executor 1, partition 39, NODE_LOCAL, 4906 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:18,795 INFO scheduler.TaskSetManager: Finished task 23.0 in stage 4.0 (TID 28) in 2001 ms on parasilo-9.rennes.grid5000.fr (executor 1) (21/58)
+2021-10-02 15:16:18,962 INFO scheduler.TaskSetManager: Starting task 33.0 in stage 4.0 (TID 49) (parasilo-11.rennes.grid5000.fr, executor 6, partition 33, NODE_LOCAL, 4906 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:18,962 INFO scheduler.TaskSetManager: Finished task 24.0 in stage 4.0 (TID 29) in 2158 ms on parasilo-11.rennes.grid5000.fr (executor 6) (22/58)
+2021-10-02 15:16:19,056 INFO scheduler.TaskSetManager: Starting task 45.0 in stage 4.0 (TID 50) (parasilo-9.rennes.grid5000.fr, executor 1, partition 45, NODE_LOCAL, 4906 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:19,056 INFO scheduler.TaskSetManager: Finished task 27.0 in stage 4.0 (TID 31) in 2094 ms on parasilo-9.rennes.grid5000.fr (executor 1) (23/58)
+2021-10-02 15:16:19,085 INFO scheduler.TaskSetManager: Starting task 42.0 in stage 4.0 (TID 51) (parasilo-15.rennes.grid5000.fr, executor 2, partition 42, NODE_LOCAL, 4906 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:19,085 INFO scheduler.TaskSetManager: Finished task 11.0 in stage 4.0 (TID 17) in 4762 ms on parasilo-15.rennes.grid5000.fr (executor 2) (24/58)
+2021-10-02 15:16:19,120 INFO scheduler.TaskSetManager: Starting task 49.0 in stage 4.0 (TID 52) (parasilo-15.rennes.grid5000.fr, executor 2, partition 49, NODE_LOCAL, 4906 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:19,120 INFO scheduler.TaskSetManager: Finished task 0.0 in stage 4.0 (TID 5) in 4800 ms on parasilo-15.rennes.grid5000.fr (executor 2) (25/58)
+2021-10-02 15:16:19,174 INFO scheduler.TaskSetManager: Starting task 46.0 in stage 4.0 (TID 53) (parasilo-9.rennes.grid5000.fr, executor 1, partition 46, NODE_LOCAL, 4906 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:19,174 INFO scheduler.TaskSetManager: Finished task 29.0 in stage 4.0 (TID 35) in 2097 ms on parasilo-9.rennes.grid5000.fr (executor 1) (26/58)
+2021-10-02 15:16:19,218 INFO scheduler.TaskSetManager: Starting task 50.0 in stage 4.0 (TID 54) (parasilo-9.rennes.grid5000.fr, executor 1, partition 50, NODE_LOCAL, 4906 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:19,219 INFO scheduler.TaskSetManager: Finished task 28.0 in stage 4.0 (TID 32) in 2256 ms on parasilo-9.rennes.grid5000.fr (executor 1) (27/58)
+2021-10-02 15:16:19,220 INFO scheduler.TaskSetManager: Starting task 38.0 in stage 4.0 (TID 55) (parasilo-11.rennes.grid5000.fr, executor 6, partition 38, NODE_LOCAL, 4906 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:19,220 INFO scheduler.TaskSetManager: Finished task 32.0 in stage 4.0 (TID 34) in 2144 ms on parasilo-11.rennes.grid5000.fr (executor 6) (28/58)
+2021-10-02 15:16:19,244 INFO scheduler.TaskSetManager: Starting task 40.0 in stage 4.0 (TID 56) (parasilo-11.rennes.grid5000.fr, executor 6, partition 40, NODE_LOCAL, 4906 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:19,244 INFO scheduler.TaskSetManager: Finished task 25.0 in stage 4.0 (TID 30) in 2320 ms on parasilo-11.rennes.grid5000.fr (executor 6) (29/58)
+2021-10-02 15:16:19,291 INFO scheduler.TaskSetManager: Starting task 57.0 in stage 4.0 (TID 57) (parasilo-15.rennes.grid5000.fr, executor 2, partition 57, NODE_LOCAL, 4906 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:19,292 INFO scheduler.TaskSetManager: Finished task 3.0 in stage 4.0 (TID 11) in 4971 ms on parasilo-15.rennes.grid5000.fr (executor 2) (30/58)
+2021-10-02 15:16:19,406 INFO scheduler.TaskSetManager: Starting task 54.0 in stage 4.0 (TID 58) (parasilo-14.rennes.grid5000.fr, executor 5, partition 54, NODE_LOCAL, 4906 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:19,407 INFO scheduler.TaskSetManager: Finished task 34.0 in stage 4.0 (TID 36) in 2231 ms on parasilo-14.rennes.grid5000.fr (executor 5) (31/58)
+2021-10-02 15:16:19,501 INFO scheduler.TaskSetManager: Starting task 53.0 in stage 4.0 (TID 59) (parasilo-11.rennes.grid5000.fr, executor 6, partition 53, NODE_LOCAL, 4906 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:19,501 INFO scheduler.TaskSetManager: Finished task 30.0 in stage 4.0 (TID 33) in 2471 ms on parasilo-11.rennes.grid5000.fr (executor 6) (32/58)
+2021-10-02 15:16:19,663 INFO scheduler.TaskSetManager: Starting task 4.0 in stage 5.0 (TID 60) (parasilo-14.rennes.grid5000.fr, executor 5, partition 4, NODE_LOCAL, 4904 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:19,664 INFO scheduler.TaskSetManager: Finished task 35.0 in stage 4.0 (TID 37) in 2208 ms on parasilo-14.rennes.grid5000.fr (executor 5) (33/58)
+2021-10-02 15:16:19,680 INFO storage.BlockManagerInfo: Added broadcast_11_piece0 in memory on parasilo-14.rennes.grid5000.fr:45777 (size: 8.4 KiB, free: 366.2 MiB)
+2021-10-02 15:16:19,736 INFO storage.BlockManagerInfo: Added broadcast_8_piece0 in memory on parasilo-14.rennes.grid5000.fr:45777 (size: 52.6 KiB, free: 366.2 MiB)
+2021-10-02 15:16:19,751 INFO scheduler.TaskSetManager: Starting task 5.0 in stage 5.0 (TID 61) (parasilo-14.rennes.grid5000.fr, executor 5, partition 5, NODE_LOCAL, 4904 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:19,751 INFO scheduler.TaskSetManager: Finished task 36.0 in stage 4.0 (TID 38) in 2293 ms on parasilo-14.rennes.grid5000.fr (executor 5) (34/58)
+2021-10-02 15:16:19,895 INFO scheduler.TaskSetManager: Starting task 7.0 in stage 5.0 (TID 62) (parasilo-15.rennes.grid5000.fr, executor 2, partition 7, NODE_LOCAL, 4904 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:19,895 INFO scheduler.TaskSetManager: Finished task 26.0 in stage 4.0 (TID 23) in 5571 ms on parasilo-15.rennes.grid5000.fr (executor 2) (35/58)
+2021-10-02 15:16:19,906 INFO storage.BlockManagerInfo: Added broadcast_11_piece0 in memory on parasilo-15.rennes.grid5000.fr:42489 (size: 8.4 KiB, free: 366.2 MiB)
+2021-10-02 15:16:19,979 INFO storage.BlockManagerInfo: Added broadcast_8_piece0 in memory on parasilo-15.rennes.grid5000.fr:42489 (size: 52.6 KiB, free: 366.2 MiB)
+2021-10-02 15:16:20,150 INFO scheduler.TaskSetManager: Starting task 6.0 in stage 5.0 (TID 63) (parasilo-14.rennes.grid5000.fr, executor 5, partition 6, NODE_LOCAL, 4904 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:20,151 INFO scheduler.TaskSetManager: Finished task 37.0 in stage 4.0 (TID 39) in 2080 ms on parasilo-14.rennes.grid5000.fr (executor 5) (36/58)
+2021-10-02 15:16:20,721 INFO scheduler.TaskSetManager: Starting task 0.0 in stage 5.0 (TID 64) (parasilo-9.rennes.grid5000.fr, executor 1, partition 0, NODE_LOCAL, 4904 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:20,721 INFO scheduler.TaskSetManager: Finished task 39.0 in stage 4.0 (TID 48) in 1926 ms on parasilo-9.rennes.grid5000.fr (executor 1) (37/58)
+2021-10-02 15:16:20,737 INFO storage.BlockManagerInfo: Added broadcast_11_piece0 in memory on parasilo-9.rennes.grid5000.fr:46085 (size: 8.4 KiB, free: 366.2 MiB)
+2021-10-02 15:16:20,808 INFO scheduler.TaskSetManager: Starting task 55.0 in stage 4.0 (TID 65) (parasilo-17.rennes.grid5000.fr, executor 3, partition 55, NODE_LOCAL, 4906 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:20,809 INFO scheduler.TaskSetManager: Finished task 51.0 in stage 4.0 (TID 42) in 2111 ms on parasilo-17.rennes.grid5000.fr (executor 3) (38/58)
+2021-10-02 15:16:20,822 INFO storage.BlockManagerInfo: Added broadcast_8_piece0 in memory on parasilo-9.rennes.grid5000.fr:46085 (size: 52.6 KiB, free: 366.2 MiB)
+2021-10-02 15:16:20,828 INFO scheduler.TaskSetManager: Starting task 56.0 in stage 4.0 (TID 66) (parasilo-17.rennes.grid5000.fr, executor 3, partition 56, NODE_LOCAL, 4906 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:20,829 INFO scheduler.TaskSetManager: Finished task 44.0 in stage 4.0 (TID 41) in 2167 ms on parasilo-17.rennes.grid5000.fr (executor 3) (39/58)
+2021-10-02 15:16:20,880 INFO scheduler.TaskSetManager: Starting task 1.0 in stage 5.0 (TID 67) (parasilo-28.rennes.grid5000.fr, executor 4, partition 1, NODE_LOCAL, 4904 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:20,880 INFO scheduler.TaskSetManager: Finished task 48.0 in stage 4.0 (TID 46) in 2161 ms on parasilo-28.rennes.grid5000.fr (executor 4) (40/58)
+2021-10-02 15:16:20,897 INFO storage.BlockManagerInfo: Added broadcast_11_piece0 in memory on parasilo-28.rennes.grid5000.fr:40837 (size: 8.4 KiB, free: 366.2 MiB)
+2021-10-02 15:16:20,933 INFO scheduler.TaskSetManager: Starting task 8.0 in stage 5.0 (TID 68) (parasilo-28.rennes.grid5000.fr, executor 4, partition 8, NODE_LOCAL, 4904 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:20,933 INFO scheduler.TaskSetManager: Finished task 47.0 in stage 4.0 (TID 45) in 2227 ms on parasilo-28.rennes.grid5000.fr (executor 4) (41/58)
+2021-10-02 15:16:20,968 INFO storage.BlockManagerInfo: Added broadcast_8_piece0 in memory on parasilo-28.rennes.grid5000.fr:40837 (size: 52.6 KiB, free: 366.2 MiB)
+2021-10-02 15:16:21,000 INFO scheduler.TaskSetManager: Starting task 2.0 in stage 5.0 (TID 69) (parasilo-11.rennes.grid5000.fr, executor 6, partition 2, NODE_LOCAL, 4904 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:21,000 INFO scheduler.TaskSetManager: Finished task 33.0 in stage 4.0 (TID 49) in 2038 ms on parasilo-11.rennes.grid5000.fr (executor 6) (42/58)
+2021-10-02 15:16:21,028 INFO storage.BlockManagerInfo: Added broadcast_11_piece0 in memory on parasilo-11.rennes.grid5000.fr:35281 (size: 8.4 KiB, free: 366.1 MiB)
+2021-10-02 15:16:21,059 INFO scheduler.TaskSetManager: Starting task 11.0 in stage 5.0 (TID 70) (parasilo-17.rennes.grid5000.fr, executor 3, partition 11, NODE_LOCAL, 4904 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:21,059 INFO scheduler.TaskSetManager: Finished task 52.0 in stage 4.0 (TID 47) in 2335 ms on parasilo-17.rennes.grid5000.fr (executor 3) (43/58)
+2021-10-02 15:16:21,076 INFO storage.BlockManagerInfo: Added broadcast_11_piece0 in memory on parasilo-17.rennes.grid5000.fr:39815 (size: 8.4 KiB, free: 366.2 MiB)
+2021-10-02 15:16:21,078 INFO scheduler.TaskSetManager: Starting task 9.0 in stage 5.0 (TID 71) (parasilo-14.rennes.grid5000.fr, executor 5, partition 9, NODE_LOCAL, 4904 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:21,079 INFO scheduler.TaskSetManager: Finished task 4.0 in stage 5.0 (TID 60) in 1416 ms on parasilo-14.rennes.grid5000.fr (executor 5) (1/24)
+2021-10-02 15:16:21,087 INFO scheduler.TaskSetManager: Starting task 10.0 in stage 5.0 (TID 72) (parasilo-28.rennes.grid5000.fr, executor 4, partition 10, NODE_LOCAL, 4904 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:21,087 INFO scheduler.TaskSetManager: Finished task 31.0 in stage 4.0 (TID 43) in 2383 ms on parasilo-28.rennes.grid5000.fr (executor 4) (44/58)
+2021-10-02 15:16:21,104 INFO storage.BlockManagerInfo: Added broadcast_8_piece0 in memory on parasilo-11.rennes.grid5000.fr:35281 (size: 52.6 KiB, free: 366.1 MiB)
+2021-10-02 15:16:21,125 INFO scheduler.TaskSetManager: Starting task 3.0 in stage 5.0 (TID 73) (parasilo-9.rennes.grid5000.fr, executor 1, partition 3, NODE_LOCAL, 4904 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:21,126 INFO scheduler.TaskSetManager: Finished task 45.0 in stage 4.0 (TID 50) in 2070 ms on parasilo-9.rennes.grid5000.fr (executor 1) (45/58)
+2021-10-02 15:16:21,141 INFO scheduler.TaskSetManager: Starting task 12.0 in stage 5.0 (TID 74) (parasilo-17.rennes.grid5000.fr, executor 3, partition 12, NODE_LOCAL, 4904 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:21,141 INFO scheduler.TaskSetManager: Finished task 43.0 in stage 4.0 (TID 40) in 2516 ms on parasilo-17.rennes.grid5000.fr (executor 3) (46/58)
+2021-10-02 15:16:21,148 INFO storage.BlockManagerInfo: Added broadcast_8_piece0 in memory on parasilo-17.rennes.grid5000.fr:39815 (size: 52.6 KiB, free: 366.2 MiB)
+2021-10-02 15:16:21,194 INFO scheduler.TaskSetManager: Starting task 13.0 in stage 5.0 (TID 75) (parasilo-14.rennes.grid5000.fr, executor 5, partition 13, NODE_LOCAL, 4904 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:21,195 INFO scheduler.TaskSetManager: Finished task 5.0 in stage 5.0 (TID 61) in 1444 ms on parasilo-14.rennes.grid5000.fr (executor 5) (2/24)
+2021-10-02 15:16:21,237 INFO scheduler.TaskSetManager: Starting task 14.0 in stage 5.0 (TID 76) (parasilo-28.rennes.grid5000.fr, executor 4, partition 14, NODE_LOCAL, 4904 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:21,238 INFO scheduler.TaskSetManager: Finished task 41.0 in stage 4.0 (TID 44) in 2533 ms on parasilo-28.rennes.grid5000.fr (executor 4) (47/58)
+2021-10-02 15:16:21,240 INFO scheduler.TaskSetManager: Starting task 15.0 in stage 5.0 (TID 77) (parasilo-15.rennes.grid5000.fr, executor 2, partition 15, NODE_LOCAL, 4904 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:21,241 INFO scheduler.TaskSetManager: Finished task 7.0 in stage 5.0 (TID 62) in 1346 ms on parasilo-15.rennes.grid5000.fr (executor 2) (3/24)
+2021-10-02 15:16:21,298 INFO scheduler.TaskSetManager: Starting task 16.0 in stage 5.0 (TID 78) (parasilo-15.rennes.grid5000.fr, executor 2, partition 16, NODE_LOCAL, 4904 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:21,298 INFO scheduler.TaskSetManager: Finished task 42.0 in stage 4.0 (TID 51) in 2213 ms on parasilo-15.rennes.grid5000.fr (executor 2) (48/58)
+2021-10-02 15:16:21,345 INFO scheduler.TaskSetManager: Finished task 6.0 in stage 5.0 (TID 63) in 1195 ms on parasilo-14.rennes.grid5000.fr (executor 5) (4/24)
+2021-10-02 15:16:21,362 INFO scheduler.TaskSetManager: Starting task 22.0 in stage 5.0 (TID 79) (parasilo-11.rennes.grid5000.fr, executor 6, partition 22, NODE_LOCAL, 4904 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:21,362 INFO scheduler.TaskSetManager: Finished task 40.0 in stage 4.0 (TID 56) in 2118 ms on parasilo-11.rennes.grid5000.fr (executor 6) (49/58)
+2021-10-02 15:16:21,387 INFO scheduler.TaskSetManager: Starting task 17.0 in stage 5.0 (TID 80) (parasilo-9.rennes.grid5000.fr, executor 1, partition 17, NODE_LOCAL, 4904 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:21,387 INFO scheduler.TaskSetManager: Finished task 46.0 in stage 4.0 (TID 53) in 2213 ms on parasilo-9.rennes.grid5000.fr (executor 1) (50/58)
+2021-10-02 15:16:21,401 INFO scheduler.TaskSetManager: Starting task 18.0 in stage 5.0 (TID 81) (parasilo-15.rennes.grid5000.fr, executor 2, partition 18, NODE_LOCAL, 4904 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:21,402 INFO scheduler.TaskSetManager: Finished task 57.0 in stage 4.0 (TID 57) in 2110 ms on parasilo-15.rennes.grid5000.fr (executor 2) (51/58)
+2021-10-02 15:16:21,470 INFO scheduler.TaskSetManager: Starting task 19.0 in stage 5.0 (TID 82) (parasilo-15.rennes.grid5000.fr, executor 2, partition 19, NODE_LOCAL, 4904 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:21,470 INFO scheduler.TaskSetManager: Finished task 49.0 in stage 4.0 (TID 52) in 2350 ms on parasilo-15.rennes.grid5000.fr (executor 2) (52/58)
+2021-10-02 15:16:21,484 INFO scheduler.TaskSetManager: Finished task 54.0 in stage 4.0 (TID 58) in 2078 ms on parasilo-14.rennes.grid5000.fr (executor 5) (53/58)
+2021-10-02 15:16:21,503 INFO scheduler.TaskSetManager: Starting task 20.0 in stage 5.0 (TID 83) (parasilo-9.rennes.grid5000.fr, executor 1, partition 20, NODE_LOCAL, 4904 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:21,504 INFO scheduler.TaskSetManager: Finished task 50.0 in stage 4.0 (TID 54) in 2286 ms on parasilo-9.rennes.grid5000.fr (executor 1) (54/58)
+2021-10-02 15:16:21,553 INFO scheduler.TaskSetManager: Starting task 23.0 in stage 5.0 (TID 84) (parasilo-11.rennes.grid5000.fr, executor 6, partition 23, NODE_LOCAL, 4904 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:21,553 INFO scheduler.TaskSetManager: Finished task 53.0 in stage 4.0 (TID 59) in 2052 ms on parasilo-11.rennes.grid5000.fr (executor 6) (55/58)
+2021-10-02 15:16:21,609 INFO scheduler.TaskSetManager: Finished task 38.0 in stage 4.0 (TID 55) in 2389 ms on parasilo-11.rennes.grid5000.fr (executor 6) (56/58)
+2021-10-02 15:16:22,084 INFO scheduler.TaskSetManager: Starting task 21.0 in stage 5.0 (TID 85) (parasilo-9.rennes.grid5000.fr, executor 1, partition 21, NODE_LOCAL, 4904 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:22,084 INFO scheduler.TaskSetManager: Finished task 0.0 in stage 5.0 (TID 64) in 1363 ms on parasilo-9.rennes.grid5000.fr (executor 1) (5/24)
+2021-10-02 15:16:22,321 INFO scheduler.TaskSetManager: Finished task 9.0 in stage 5.0 (TID 71) in 1243 ms on parasilo-14.rennes.grid5000.fr (executor 5) (6/24)
+2021-10-02 15:16:22,325 INFO scheduler.TaskSetManager: Finished task 8.0 in stage 5.0 (TID 68) in 1392 ms on parasilo-28.rennes.grid5000.fr (executor 4) (7/24)
+2021-10-02 15:16:22,397 INFO scheduler.TaskSetManager: Finished task 2.0 in stage 5.0 (TID 69) in 1397 ms on parasilo-11.rennes.grid5000.fr (executor 6) (8/24)
+2021-10-02 15:16:22,416 INFO scheduler.TaskSetManager: Finished task 3.0 in stage 5.0 (TID 73) in 1291 ms on parasilo-9.rennes.grid5000.fr (executor 1) (9/24)
+2021-10-02 15:16:22,457 INFO scheduler.TaskSetManager: Finished task 1.0 in stage 5.0 (TID 67) in 1577 ms on parasilo-28.rennes.grid5000.fr (executor 4) (10/24)
+2021-10-02 15:16:22,482 INFO scheduler.TaskSetManager: Finished task 13.0 in stage 5.0 (TID 75) in 1288 ms on parasilo-14.rennes.grid5000.fr (executor 5) (11/24)
+2021-10-02 15:16:22,501 INFO scheduler.TaskSetManager: Finished task 15.0 in stage 5.0 (TID 77) in 1261 ms on parasilo-15.rennes.grid5000.fr (executor 2) (12/24)
+2021-10-02 15:16:22,519 INFO scheduler.TaskSetManager: Finished task 14.0 in stage 5.0 (TID 76) in 1282 ms on parasilo-28.rennes.grid5000.fr (executor 4) (13/24)
+2021-10-02 15:16:22,523 INFO scheduler.TaskSetManager: Finished task 11.0 in stage 5.0 (TID 70) in 1464 ms on parasilo-17.rennes.grid5000.fr (executor 3) (14/24)
+2021-10-02 15:16:22,570 INFO scheduler.TaskSetManager: Finished task 10.0 in stage 5.0 (TID 72) in 1483 ms on parasilo-28.rennes.grid5000.fr (executor 4) (15/24)
+2021-10-02 15:16:22,571 INFO scheduler.TaskSetManager: Finished task 12.0 in stage 5.0 (TID 74) in 1431 ms on parasilo-17.rennes.grid5000.fr (executor 3) (16/24)
+2021-10-02 15:16:22,603 INFO scheduler.TaskSetManager: Finished task 22.0 in stage 5.0 (TID 79) in 1241 ms on parasilo-11.rennes.grid5000.fr (executor 6) (17/24)
+2021-10-02 15:16:22,662 INFO scheduler.TaskSetManager: Finished task 18.0 in stage 5.0 (TID 81) in 1261 ms on parasilo-15.rennes.grid5000.fr (executor 2) (18/24)
+2021-10-02 15:16:22,718 INFO scheduler.TaskSetManager: Finished task 23.0 in stage 5.0 (TID 84) in 1165 ms on parasilo-11.rennes.grid5000.fr (executor 6) (19/24)
+2021-10-02 15:16:22,731 INFO scheduler.TaskSetManager: Finished task 16.0 in stage 5.0 (TID 78) in 1434 ms on parasilo-15.rennes.grid5000.fr (executor 2) (20/24)
+2021-10-02 15:16:22,811 INFO scheduler.TaskSetManager: Finished task 17.0 in stage 5.0 (TID 80) in 1424 ms on parasilo-9.rennes.grid5000.fr (executor 1) (21/24)
+2021-10-02 15:16:22,863 INFO scheduler.TaskSetManager: Finished task 19.0 in stage 5.0 (TID 82) in 1393 ms on parasilo-15.rennes.grid5000.fr (executor 2) (22/24)
+2021-10-02 15:16:22,920 INFO scheduler.TaskSetManager: Finished task 55.0 in stage 4.0 (TID 65) in 2112 ms on parasilo-17.rennes.grid5000.fr (executor 3) (57/58)
+2021-10-02 15:16:22,942 INFO scheduler.TaskSetManager: Finished task 20.0 in stage 5.0 (TID 83) in 1439 ms on parasilo-9.rennes.grid5000.fr (executor 1) (23/24)
+2021-10-02 15:16:22,943 INFO scheduler.TaskSetManager: Finished task 56.0 in stage 4.0 (TID 66) in 2115 ms on parasilo-17.rennes.grid5000.fr (executor 3) (58/58)
+2021-10-02 15:16:22,943 INFO cluster.YarnScheduler: Removed TaskSet 4.0, whose tasks have all completed, from pool 
+2021-10-02 15:16:22,943 INFO scheduler.DAGScheduler: ShuffleMapStage 4 (showString at NativeMethodAccessorImpl.java:0) finished in 8.634 s
+2021-10-02 15:16:22,944 INFO scheduler.DAGScheduler: looking for newly runnable stages
+2021-10-02 15:16:22,944 INFO scheduler.DAGScheduler: running: Set(ShuffleMapStage 5)
+2021-10-02 15:16:22,945 INFO scheduler.DAGScheduler: waiting: Set(ResultStage 6)
+2021-10-02 15:16:22,945 INFO scheduler.DAGScheduler: failed: Set()
+2021-10-02 15:16:23,247 INFO scheduler.TaskSetManager: Finished task 21.0 in stage 5.0 (TID 85) in 1163 ms on parasilo-9.rennes.grid5000.fr (executor 1) (24/24)
+2021-10-02 15:16:23,247 INFO cluster.YarnScheduler: Removed TaskSet 5.0, whose tasks have all completed, from pool 
+2021-10-02 15:16:23,248 INFO scheduler.DAGScheduler: ShuffleMapStage 5 (showString at NativeMethodAccessorImpl.java:0) finished in 8.927 s
+2021-10-02 15:16:23,248 INFO scheduler.DAGScheduler: looking for newly runnable stages
+2021-10-02 15:16:23,248 INFO scheduler.DAGScheduler: running: Set()
+2021-10-02 15:16:23,248 INFO scheduler.DAGScheduler: waiting: Set(ResultStage 6)
+2021-10-02 15:16:23,248 INFO scheduler.DAGScheduler: failed: Set()
+2021-10-02 15:16:23,248 INFO scheduler.DAGScheduler: Submitting ResultStage 6 (MapPartitionsRDD[34] at showString at NativeMethodAccessorImpl.java:0), which has no missing parents
+2021-10-02 15:16:23,259 INFO memory.MemoryStore: Block broadcast_12 stored as values in memory (estimated size 41.3 KiB, free 405.7 MiB)
+2021-10-02 15:16:23,261 INFO memory.MemoryStore: Block broadcast_12_piece0 stored as bytes in memory (estimated size 18.5 KiB, free 405.7 MiB)
+2021-10-02 15:16:23,261 INFO storage.BlockManagerInfo: Added broadcast_12_piece0 in memory on parasilo-10.rennes.grid5000.fr:43655 (size: 18.5 KiB, free: 408.7 MiB)
+2021-10-02 15:16:23,262 INFO spark.SparkContext: Created broadcast 12 from broadcast at DAGScheduler.scala:1383
+2021-10-02 15:16:23,262 INFO scheduler.DAGScheduler: Submitting 1 missing tasks from ResultStage 6 (MapPartitionsRDD[34] at showString at NativeMethodAccessorImpl.java:0) (first 15 tasks are for partitions Vector(0))
+2021-10-02 15:16:23,262 INFO cluster.YarnScheduler: Adding task set 6.0 with 1 tasks resource profile 0
+2021-10-02 15:16:23,265 INFO scheduler.TaskSetManager: Starting task 0.0 in stage 6.0 (TID 86) (parasilo-9.rennes.grid5000.fr, executor 1, partition 0, NODE_LOCAL, 4746 bytes) taskResourceAssignments Map()
+2021-10-02 15:16:23,285 INFO storage.BlockManagerInfo: Added broadcast_12_piece0 in memory on parasilo-9.rennes.grid5000.fr:46085 (size: 18.5 KiB, free: 366.2 MiB)
+2021-10-02 15:16:23,351 INFO spark.MapOutputTrackerMasterEndpoint: Asked to send map output locations for shuffle 0 to 172.16.97.9:56324
+2021-10-02 15:16:23,484 INFO spark.MapOutputTrackerMasterEndpoint: Asked to send map output locations for shuffle 1 to 172.16.97.9:56324
+2021-10-02 15:16:23,668 INFO scheduler.TaskSetManager: Finished task 0.0 in stage 6.0 (TID 86) in 404 ms on parasilo-9.rennes.grid5000.fr (executor 1) (1/1)
+2021-10-02 15:16:23,668 INFO cluster.YarnScheduler: Removed TaskSet 6.0, whose tasks have all completed, from pool 
+2021-10-02 15:16:23,668 INFO scheduler.DAGScheduler: ResultStage 6 (showString at NativeMethodAccessorImpl.java:0) finished in 0.415 s
+2021-10-02 15:16:23,669 INFO scheduler.DAGScheduler: Job 4 is finished. Cancelling potential speculative or zombie tasks for this job
+2021-10-02 15:16:23,669 INFO cluster.YarnScheduler: Killing all running tasks in stage 6: Stage finished
+2021-10-02 15:16:23,669 INFO scheduler.DAGScheduler: Job 4 finished: showString at NativeMethodAccessorImpl.java:0, took 9.375853 s
+2021-10-02 15:16:23,686 INFO codegen.CodeGenerator: Code generated in 10.578712 ms
+2021-10-02 15:16:23,745 INFO datasources.FileSourceStrategy: Pushed Filters: IsNotNull(o_orderdate),IsNotNull(o_orderkey)
+2021-10-02 15:16:23,745 INFO datasources.FileSourceStrategy: Post-Scan Filters: isnotnull(o_orderdate#118),(cast(o_orderdate#118 as date) < 9204),isnotnull(o_orderkey#114)
+2021-10-02 15:16:23,745 INFO datasources.FileSourceStrategy: Output Data Schema: struct<o_orderkey: int, o_orderdate: string, o_shippriority: int ... 1 more fields>
+2021-10-02 15:16:23,746 INFO datasources.FileSourceStrategy: Pushed Filters: IsNotNull(l_shipdate),IsNotNull(l_orderkey)
+2021-10-02 15:16:23,746 INFO datasources.FileSourceStrategy: Post-Scan Filters: isnotnull(l_shipdate#58),(cast(l_shipdate#58 as date) > 9204),isnotnull(l_orderkey#48)
+2021-10-02 15:16:23,747 INFO datasources.FileSourceStrategy: Output Data Schema: struct<l_orderkey: int, l_shipdate: string>
+2021-10-02 15:16:23,759 INFO datasources.FileSourceStrategy: Pushed Filters: 
+2021-10-02 15:16:23,759 INFO datasources.FileSourceStrategy: Post-Scan Filters: 
+2021-10-02 15:16:23,759 INFO datasources.FileSourceStrategy: Output Data Schema: struct<o_orderkey: int, o_custkey: int, o_orderstatus: string, o_totalprice: double, o_orderdate: string ... 7 more fields>
+2021-10-02 15:16:23,762 INFO memory.MemoryStore: Block broadcast_13 stored as values in memory (estimated size 737.1 KiB, free 405.0 MiB)
+2021-10-02 15:16:23,775 INFO memory.MemoryStore: Block broadcast_13_piece0 stored as bytes in memory (estimated size 52.6 KiB, free 404.9 MiB)
+2021-10-02 15:16:23,775 INFO storage.BlockManagerInfo: Added broadcast_13_piece0 in memory on parasilo-10.rennes.grid5000.fr:43655 (size: 52.6 KiB, free: 408.6 MiB)
+2021-10-02 15:16:23,776 INFO spark.SparkContext: Created broadcast 13 from javaToPython at NativeMethodAccessorImpl.java:0
+2021-10-02 15:16:23,776 INFO execution.FileSourceScanExec: Planning scan with bin packing, max size: 73057888 bytes, open cost is considered as scanning 4194304 bytes.
+2021-10-02 15:16:23,797 INFO datasources.FileSourceStrategy: Pushed Filters: 
+2021-10-02 15:16:23,797 INFO datasources.FileSourceStrategy: Post-Scan Filters: 
+2021-10-02 15:16:23,797 INFO datasources.FileSourceStrategy: Output Data Schema: struct<l_orderkey: int, l_partkey: int, l_suppkey: int, l_linenumber: int, l_quantity: double ... 14 more fields>
+2021-10-02 15:16:23,800 INFO memory.MemoryStore: Block broadcast_14 stored as values in memory (estimated size 737.1 KiB, free 404.2 MiB)
+2021-10-02 15:16:23,813 INFO memory.MemoryStore: Block broadcast_14_piece0 stored as bytes in memory (estimated size 52.6 KiB, free 404.2 MiB)
+2021-10-02 15:16:23,813 INFO storage.BlockManagerInfo: Added broadcast_14_piece0 in memory on parasilo-10.rennes.grid5000.fr:43655 (size: 52.6 KiB, free: 408.6 MiB)
+2021-10-02 15:16:23,813 INFO spark.SparkContext: Created broadcast 14 from javaToPython at NativeMethodAccessorImpl.java:0
+2021-10-02 15:16:23,814 INFO execution.FileSourceScanExec: Planning scan with bin packing, max size: 134217728 bytes, open cost is considered as scanning 4194304 bytes.
+2021-10-02 15:16:23,848 INFO spark.SparkContext: Invoking stop() from shutdown hook
+2021-10-02 15:16:23,859 INFO server.AbstractConnector: Stopped Spark@14eedc04{HTTP/1.1, (http/1.1)}{0.0.0.0:4040}
+2021-10-02 15:16:23,860 INFO ui.SparkUI: Stopped Spark web UI at http://parasilo-10.rennes.grid5000.fr:4040
+2021-10-02 15:16:23,864 INFO cluster.YarnClientSchedulerBackend: Interrupting monitor thread
+2021-10-02 15:16:23,875 INFO cluster.YarnClientSchedulerBackend: Shutting down all executors
+2021-10-02 15:16:23,875 INFO cluster.YarnSchedulerBackend$YarnDriverEndpoint: Asking each executor to shut down
+2021-10-02 15:16:23,879 INFO cluster.YarnClientSchedulerBackend: YARN client scheduler backend Stopped
+2021-10-02 15:16:23,886 INFO spark.MapOutputTrackerMasterEndpoint: MapOutputTrackerMasterEndpoint stopped!
+2021-10-02 15:16:23,902 INFO memory.MemoryStore: MemoryStore cleared
+2021-10-02 15:16:23,902 INFO storage.BlockManager: BlockManager stopped
+2021-10-02 15:16:23,904 INFO storage.BlockManagerMaster: BlockManagerMaster stopped
+2021-10-02 15:16:23,909 INFO scheduler.OutputCommitCoordinator$OutputCommitCoordinatorEndpoint: OutputCommitCoordinator stopped!
+2021-10-02 15:16:23,914 INFO spark.SparkContext: Successfully stopped SparkContext
+2021-10-02 15:16:23,914 INFO util.ShutdownHookManager: Shutdown hook called
+2021-10-02 15:16:23,915 INFO util.ShutdownHookManager: Deleting directory /tmp/spark-425c07dd-350e-4fe0-a8b6-799fe738bec9/pyspark-ffb0c625-c0b8-4c65-8d91-9425ebe5efb5
+2021-10-02 15:16:23,917 INFO util.ShutdownHookManager: Deleting directory /tmp/spark-83b30faf-a203-4aaa-bbae-90420cae3fab
+2021-10-02 15:16:23,920 INFO util.ShutdownHookManager: Deleting directory /tmp/spark-425c07dd-350e-4fe0-a8b6-799fe738bec9
